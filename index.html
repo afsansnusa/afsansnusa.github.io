@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Afsans</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Menggunakan font Poppins sebagai default */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Styling untuk splash screen (animasi welcome) */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background-color: #0a0a0a;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #4f4f4f;
+            border-top-color: #0ea5e9; /* sky-500 */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Styling untuk efek mengetik */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.1em;
+            background-color: #0ea5e9;
+            animation: blink 0.7s infinite;
+            vertical-align: bottom;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Styling untuk animasi fade-in saat scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Styling untuk Modal Proyek */
+        #project-modal.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #project-modal.visible #modal-content {
+            transform: scale(1);
+        }
+        
+        /* Styling untuk Halaman Galeri */
+        .gallery-page {
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .category-card .overlay {
+            transition: background-color 0.4s ease;
+        }
+        .category-card:hover .overlay {
+            background-color: rgba(0,0,0,0.7);
+        }
+        .category-card .card-content {
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .category-card:hover .card-content {
+            transform: translateY(-10px);
+        }
+        .category-card:hover .arrow-icon {
+            opacity: 1;
+            transform: translateY(0) rotate(-45deg);
+        }
+        .arrow-icon {
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: translateY(10px) rotate(-45deg);
+        }
+
+        /* Custom scrollbar styling */
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: #4b5563 #0a0a0a;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #4b5563;
+            border-radius: 20px;
+        }
+
+        /* Cursor untuk grab-to-scroll */
+        .cursor-grab { cursor: grab; }
+        .cursor-grabbing { cursor: grabbing; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Animasi Welcome -->
+    <div id="splash-screen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header & Navigasi -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white hover:text-sky-400 transition-colors">Afsans.</a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="hover:text-sky-400 transition-colors">Tentang Saya</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Proyek</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors">Kontak</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/80 backdrop-blur-sm">
+            <a href="#about" class="block py-3 px-6 hover:bg-gray-800">Tentang Saya</a>
+            <a href="#projects" class="block py-3 px-6 hover:bg-gray-800">Proyek</a>
+            <a href="#contact" class="block py-3 px-6 hover:bg-gray-800">Kontak</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="container mx-auto px-6 min-h-screen flex items-center justify-center text-center">
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                    Saya Seorang <br>
+                    <span id="typing-text" class="text-sky-400"></span><span class="typing-cursor"></span>
+                </h1>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    Menciptakan visual yang bercerita dan membangun pengalaman digital yang tak terlupakan.
+                </p>
+                <a href="#projects" class="inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-full hover:bg-sky-600 transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
+                    Lihat Karya Saya
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container mx-auto px-6 py-24 reveal">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <img src="me.jpg" alt="Foto Profil" class="rounded-full shadow-2xl mx-auto border-4 border-gray-800">
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h2 class="text-4xl font-bold text-white mb-4">Halo, Saya Iqbal Fadil</h2>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        Saya adalah seorang kreator visual dan pengembang web dengan hasrat untuk menggabungkan estetika dan fungsionalitas. Dengan latar belakang di bidang fotografi dan videografi, saya membawa perspektif unik dalam setiap proyek digital yang saya kerjakan, memastikan setiap detail memiliki makna dan tujuan.
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-5">
+                        <a href="https://www.instagram.com/fadilif_?igsh=enA4ZTd4ZTBiaW85" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-8 h-8"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="youtube" class="w-8 h-8"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100093433513369&mibextid=rS40aB7S9Ucbxw6v" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-8 h-8"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="github" class="w-8 h-8"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 overflow-hidden">
+            <div class="container mx-auto px-6 text-center mb-12 reveal">
+                <h2 class="text-4xl font-bold text-white mb-2">Karya & Proyek</h2>
+                <p class="text-gray-400">Geser untuk memilih bidang dan melihat galeri karya saya.</p>
+            </div>
+
+            <div class="relative reveal">
+                 <!-- Kontainer Scroll Kategori -->
+                <div id="category-scroll-container" class="overflow-x-auto pb-6 custom-scrollbar cursor-grab">
+                    <!-- Kontainer Flex untuk Kartu Kategori -->
+                    <div class="flex px-6">
+                        <!-- Category Card: Fotografi -->
+                        <div class="category-card cursor-pointer group relative rounded-xl overflow-hidden w-80 md:w-96 flex-shrink-0 mr-8" data-target-page="fotografi-page">
+                            <img src="senja.jpg" alt="Galeri Fotografi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="overlay absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end text-white">
+                                <div class="card-content">
+                                    <h3 class="text-3xl font-bold">Fotografi</h3>
+                                    <p class="text-gray-300 mt-2">Menangkap momen dan cerita melalui lensa.</p>
+                                </div>
+                                 <div class="arrow-icon mt-4 text-sky-400">
+                                    <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category Card: Videografi -->
+                         <div class="category-card cursor-pointer group relative rounded-xl overflow-hidden w-80 md:w-96 flex-shrink-0 mr-8" data-target-page="videografi-page">
+                            <img src="Bebas berkarya.jpg" alt="Galeri Videografi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="overlay absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end text-white">
+                                <div class="card-content">
+                                    <h3 class="text-3xl font-bold">Videografi</h3>
+                                    <p class="text-gray-300 mt-2">Menghidupkan cerita dengan gambar bergerak.</p>
+                                </div>
+                                <div class="arrow-icon mt-4 text-sky-400">
+                                    <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category Card: Desain Grafis (BARU) -->
+                         <div class="category-card cursor-pointer group relative rounded-xl overflow-hidden w-80 md:w-96 flex-shrink-0 mr-8" data-target-page="desain-grafis-page">
+                            <img src="Info islam.png" alt="Galeri Desain Grafis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="overlay absolute inset-0 bg-black/50"></div>
+                             <div class="absolute inset-0 p-8 flex flex-col justify-end text-white">
+                                <div class="card-content">
+                                    <h3 class="text-3xl font-bold">Desain Grafis</h3>
+                                    <p class="text-gray-300 mt-2">Menciptakan identitas visual dan komunikasi yang efektif.</p>
+                                </div>
+                                 <div class="arrow-icon mt-4 text-sky-400">
+                                    <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container mx-auto px-6 py-24 text-center reveal">
+            <h2 class="text-4xl font-bold text-white mb-4">Tertarik Bekerja Sama?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+                Saya selalu terbuka untuk kolaborasi, proyek baru, atau sekadar berdiskusi tentang ide-ide kreatif. Jangan ragu untuk menghubungi saya.
+            </p>
+            <a href="https://wa.me/6282328140597" class="inline-block bg-transparent text-sky-400 font-bold py-4 px-8 rounded-full border-2 border-sky-400 hover:bg-sky-400 hover:text-black transition-all duration-300 transform hover:scale-105">
+                Hubungi Saya
+            </a>
+        </section>
+    </main>
+    
+    <!-- GALLERY PAGES START -->
+    <!-- Fotografi Page -->
+    <section id="fotografi-page" class="gallery-page hidden min-h-screen py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center mb-12">
+                <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i>
+                    Kembali
+                </button>
+            </div>
+            <div class="text-center mb-12">
+                 <h2 class="text-4xl font-bold text-white mb-2">Galeri Fotografi</h2>
+                 <p class="text-gray-400">Kumpulan karya fotografi saya. Klik gambar untuk melihat detail.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Fotografi Items -->
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="senja.jpg" data-category="Fotografi" data-title="Potret Senja" data-description="Sebuah sesi pemotretan potret yang menangkap kehangatan cahaya matahari terbenam. Proyek ini berfokus pada permainan bayangan dan cahaya alami untuk menciptakan mood yang dramatis dan emosional."> <img src="senja.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Potret Senja</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="lalin.jpg" data-category="Fotografi" data-title="Potret Jalanan" data-description="Sesi fotografi jalanan yang berfokus pada suatu objek supaya terlihat mendramatisir."> <img src="lalin.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Lampu Merah</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="sawah.jpeg" data-category="Fotografi" data-title="Pemandangan Sawah" data-description="Seri foto yang mengeksplorasi keindahan dan kegiatan di sawah yang berfokus pada suatu objek."> <img src="sawah.jpeg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Pemandangan Sawah</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="kucing.jpg" data-category="Fotografi" data-title="Foto Hewan" data-description="Fotografi hewan dengan tekhnik editing melalui lightroom sehingga menampilkan warna yang cocok dengan objek."> <img src="kucing.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Foto Hewan</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="pantai.jpg" data-category="Fotografi" data-title="Suasana Pantai" data-description="Fotografi Suasana pantai dengan pencahayaan alami supaya terlihat natural tapi dengan sedikit penyesuaian editing."> <img src="pantai.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Suasana Pantai</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="candith.jpg" data-category="Fotografi" data-title="Human Interest" data-description="Sesi Fotography tentang kegiatan kelompok orang seperti mengobrol dan lainnya, dengan editing fokus dan warna yang hangat."> <img src="candith.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Human Interest</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="sore.jpeg" data-category="Fotografi" data-title="Senja pantai" data-description="Sesi pemotretan yang menangkap keindahan senja di pantai dengan subjek dan terlihat dramatis."> <img src="sore.jpeg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Senja Pantai</h3> </div> </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videografi Page -->
+    <section id="videografi-page" class="gallery-page hidden min-h-screen py-24">
+        <div class="container mx-auto px-6">
+             <div class="flex items-center mb-12">
+                <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i>
+                    Kembali
+                </button>
+            </div>
+             <div class="text-center mb-12">
+                 <h2 class="text-4xl font-bold text-white mb-2">Galeri Videografi</h2>
+                 <p class="text-gray-400">Kumpulan karya videografi saya. Klik video untuk melihat detail.</p>
+            </div>
+             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Videografi Items -->
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/aVbORbqzPPxvmxrx" data-category="Videografi" data-title="Iklan Kopi Nusantara" data-description="Video komersial yang menampilkan proses pembuatan kopi dari biji hingga cangkir. Menggunakan teknik sinematik dan slow-motion untuk menonjolkan kualitas dan aroma produk."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Videografi+Komersial" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Iklan Kopi Nusantara</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/djoXsRVYFAg?autoplay=1&controls=0" data-category="Videografi" data-title="Jelajah Hutan Kalimantan" data-description="Film dokumenter pendek yang mengikuti perjalanan seorang peneliti di pedalaman hutan Kalimantan. Pengambilan gambar berfokus pada keindahan alam dan interaksi dengan satwa liar."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+Dokumenter" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Jelajah Hutan Kalimantan</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="local-video" data-video-src="https://www.w3schools.com/html/mov_bbb.mp4" data-category="Videografi (File)" data-title="Pemandangan Alam" data-description="Contoh pemutaran video dari file lokal (misal: .mp4). Video ini menampilkan pemandangan alam yang indah dengan seekor kupu-kupu."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+File+Lokal" alt="Proyek Video Lokal" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi (File)</p> <h3 class="text-xl font-bold text-white">Pemandangan Alam</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/z-QY-3f-v-I?autoplay=1&controls=0" data-category="Videografi" data-title="Profil Atlet Inspiratif" data-description="Video dokumenter singkat yang mengisahkan perjalanan seorang atlet muda dalam meraih mimpinya. Menyoroti dedikasi, latihan keras, dan semangat pantang menyerah."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+Profil" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Profil Atlet Inspiratif</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0" data-category="Videografi" data-title="Video Musik Eksperimental" data-description="Sebuah video musik untuk band indie dengan konsep visual yang sureal dan eksperimental. Menggabungkan teknik sinematografi kreatif dengan penceritaan visual yang abstrak."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+Musik" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Video Musik Eksperimental</h3> </div> </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desain Grafis Page (BARU) -->
+    <section id="desain-grafis-page" class="gallery-page hidden min-h-screen py-24">
+        <div class="container mx-auto px-6">
+             <div class="flex items-center mb-12">
+                <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i>
+                    Kembali
+                </button>
+            </div>
+             <div class="text-center mb-12">
+                 <h2 class="text-4xl font-bold text-white mb-2">Galeri Desain Grafis</h2>
+                 <p class="text-gray-400">Kumpulan karya desain grafis saya.</p>
+            </div>
+             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Desain Grafis Items -->
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Typo4.png" data-category="Desain Grafis" data-title="Typography Photo" data-description="Sebuah Desain Typography yang dipadukan dengan unsur Photography didalamnya."> <img src="Typo4.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Typography</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Cerdikia.png" data-category="Desain Grafis" data-title="Desain Banner" data-description="Desain Banner untuk keperluan Bimbel. Menggabungkan elemen teks dan grafis."> <img src="Cerdikia.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Banner Bimble</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Desain Kaos.png" data-category="Desain Grafis" data-title="Desain Kaos" data-description="Desain Kaos Random, disini saya mencoba membuat Kaos Yang berhubungan dengan kota saya."> <img src="Desain Kaos.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Desain Kaos</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Logo Gamon.jpg" data-category="Desain Grafis" data-title="Logo Makanan" data-description="Desain Logo makanan lebih tepatnya Seblak. Dibuat supaya orang lebih mengenal Seblak Gamon."> <img src="Logo Gamon.jpg" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Logo Makanan</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Pamflet Tahu.jpg" data-category="Desain Grafis" data-title="Pamflet Makanan" data-description="Sebuah Pamflet makanan yang tujuan dibuatnya tentu untuk mempromosikan produk makanannya."> <img src="Pamflet Tahu.jpg" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Pamflet Makanan</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Es Jeruk.png" data-category="Desain Grafis" data-title="Pamflet Minuman" data-description="Desain Pamflet Minuman yang didalamnya terdapat berbagai elemen menarik supaya orang lebih tertarik."> <img src="Es Jeruk.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Pamflet Minuman</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Infografis.png" data-category="Desain Grafis" data-title="Poster Infografis" data-description="Desain poster Infografis yang didalamnya terdapat informasi terhadap suatu hal dan diberi desain unik supaya menarik."> <img src="Infografis.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Poster Infografis</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Sticker.png" data-category="Desain Grafis" data-title="Sticker Buket" data-description="Sticker untuk Buket, biasanya ditempel pada buket yang akan di pasarkan."> <img src="Sticker.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Sticker Buket</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Piagam.png" data-category="Desain Grafis" data-title="Desain Piagam" data-description="Desain Piagam penghargaan untuk mengapresiasi individu/kelompok, elemen teks dan grafis."> <img src="Piagam.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Desain Piagam</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Info islam.png" data-category="Desain Grafis" data-title="Poster Islami" data-description="Desain poster tentang islam seperti tips bahagia menurut islam maupun hal lainnya."> <img src="Info islam.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Poster Islami</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Aftech Bimbel.png" data-category="Desain Grafis" data-title="Logo Bimbel" data-description="Desain Logo Bimbel yang memiliki makna kesuksesan dan tekhnologi."> <img src="Aftech Bimbel.png" alt="Proyek Desain Grafis" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Desain Grafis</p> <h3 class="text-xl font-bold text-white">Logo Bimbel</h3> </div> </div>
+            </div>
+        </div>
+    </section>
+    <!-- GALLERY PAGES END -->
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 py-6">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 Afsans. Dibuat dengan semangat.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[110] flex justify-center items-center p-4 transition-opacity duration-300 opacity-0 invisible">
+        <div id="modal-content" class="bg-gray-900 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden transform scale-95 transition-transform duration-300">
+            <!-- Media container -->
+            <div class="md:w-2/3 bg-black flex items-center justify-center p-2">
+                <img id="modal-img" src="" alt="Project Image" class="w-auto h-auto max-w-full max-h-[85vh] object-contain hidden">
+                <iframe id="modal-video" class="w-full aspect-video hidden" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <video id="modal-video-local" class="w-full max-h-[85vh] aspect-video hidden" controls autoplay muted loop playsinline></video>
+            </div>
+            <!-- Details container -->
+            <div class="md:w-1/3 p-6 flex flex-col overflow-y-auto">
+                <div class="flex-grow">
+                    <p id="modal-category" class="text-sm text-sky-400 mb-1"></p>
+                    <h3 id="modal-title" class="text-2xl font-bold text-white mb-4"></h3>
+                    <p id="modal-description" class="text-gray-300 text-base"></p>
+                </div>
+            </div>
+            <button id="modal-close-button" class="absolute top-3 right-3 text-white bg-gray-800/50 rounded-full p-1 hover:bg-gray-700/70 transition-colors">
+                <i data-lucide="x" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Animasi Welcome ---
+            const splashScreen = document.getElementById('splash-screen');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    splashScreen.classList.add('hidden');
+                }, 500); // Tunda 0.5 detik sebelum fade out
+            });
+
+            // --- Efek Teks Mengetik ---
+            const typingTextElement = document.getElementById('typing-text');
+            const words = ["Fotografer", "Videografer", "Visual Desainer"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                let displayText = '';
+
+                if (isDeleting) {
+                    displayText = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    displayText = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                typingTextElement.textContent = displayText;
+                let typeSpeed = isDeleting ? 100 : 200;
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    typeSpeed = 500;
+                }
+                
+                setTimeout(type, typeSpeed);
+            }
+            type();
+
+            // --- Navigasi Mobile ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // --- Latar Belakang Header saat Scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-black/80', 'backdrop-blur-sm', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-black/80', 'backdrop-blur-sm', 'shadow-lg');
+                }
+            });
+            
+            // --- Animasi Scroll (Intersection Observer) ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            revealElements.forEach(elem => observer.observe(elem));
+
+            // --- Logika Navigasi Halaman Galeri ---
+            const mainContent = document.querySelector('main');
+            const galleryPages = document.querySelectorAll('.gallery-page');
+            const categoryCards = document.querySelectorAll('.category-card');
+            const backButtons = document.querySelectorAll('.back-to-main-btn');
+
+            categoryCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const pageId = card.dataset.targetPage;
+                    const targetPage = document.getElementById(pageId);
+
+                    if (targetPage) {
+                        mainContent.style.display = 'none';
+                        galleryPages.forEach(p => p.classList.add('hidden')); // Sembunyikan semua halaman
+                        
+                        targetPage.classList.remove('hidden');
+                        setTimeout(() => targetPage.style.opacity = 1, 10); // Transisi fade-in
+                        window.scrollTo(0, 0);
+                    }
+                });
+            });
+
+            backButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const parentPage = button.closest('.gallery-page');
+                    if (parentPage) {
+                        parentPage.style.opacity = 0;
+                        setTimeout(() => {
+                           parentPage.classList.add('hidden');
+                           mainContent.style.display = 'block';
+                        }, 500); // Tunggu transisi selesai
+                    }
+                });
+            });
+
+
+            // --- Logika Modal Proyek (sekarang berlaku di dalam halaman galeri) ---
+            const modal = document.getElementById('project-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalVideo = document.getElementById('modal-video');
+            const modalVideoLocal = document.getElementById('modal-video-local');
+            const modalCategory = document.getElementById('modal-category');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const closeModalButton = document.getElementById('modal-close-button');
+            const allProjectCards = document.querySelectorAll('.gallery-page .project-card'); // Selector diubah
+
+            allProjectCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const type = card.dataset.type || 'image';
+                    const category = card.dataset.category;
+                    const title = card.dataset.title;
+                    const description = card.dataset.description;
+
+                    modalCategory.textContent = category;
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+
+                    modalImg.classList.add('hidden');
+                    modalVideo.classList.add('hidden');
+                    modalVideoLocal.classList.add('hidden');
+
+                    if (type === 'video') {
+                        const videoSrc = card.dataset.videoSrc;
+                        modalVideo.src = videoSrc;
+                        modalVideo.classList.remove('hidden');
+                    } else if (type === 'local-video') {
+                        const videoSrc = card.dataset.videoSrc;
+                        modalVideoLocal.src = videoSrc;
+                        modalVideoLocal.classList.remove('hidden');
+                    } else {
+                        const imgSrc = card.dataset.imgSrc;
+                        modalImg.src = imgSrc;
+                        modalImg.classList.remove('hidden');
+                    }
+                    
+                    document.body.classList.add('modal-open');
+                    modal.classList.add('visible');
+                });
+            });
+
+            function closeModal() {
+                document.body.classList.remove('modal-open');
+                modal.classList.remove('visible');
+                modalVideo.src = "";
+                modalVideoLocal.pause();
+                modalVideoLocal.src = "";
+                modalImg.src = "";
+            }
+
+            closeModalButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // --- Grab to Scroll untuk Kategori Proyek ---
+            const scrollContainer = document.getElementById('category-scroll-container');
+            if (scrollContainer) {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                scrollContainer.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    scrollContainer.classList.add('cursor-grabbing');
+                    scrollContainer.classList.remove('cursor-grab');
+                    startX = e.pageX - scrollContainer.offsetLeft;
+                    scrollLeft = scrollContainer.scrollLeft;
+                });
+                scrollContainer.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    scrollContainer.classList.remove('cursor-grabbing');
+                    scrollContainer.classList.add('cursor-grab');
+                });
+                scrollContainer.addEventListener('mouseup', () => {
+                    isDown = false;
+                    scrollContainer.classList.remove('cursor-grabbing');
+                    scrollContainer.classList.add('cursor-grab');
+                });
+                scrollContainer.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - scrollContainer.offsetLeft;
+                    const walk = (x - startX) * 2; // scroll-fast
+                    scrollContainer.scrollLeft = scrollLeft - walk;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
