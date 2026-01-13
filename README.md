@@ -42,17 +42,6 @@
             opacity: 0;
             visibility: hidden;
         }
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #4f4f4f;
-            border-top-color: #0ea5e9; /* sky-500 */
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
 
         /* Styling untuk efek mengetik */
         .typing-cursor {
@@ -137,11 +126,6 @@
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Animasi Welcome -->
-    <div id="splash-screen">
-        <div class="loader"></div>
-    </div>
-
     <!-- Header & Navigasi -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -189,11 +173,11 @@
                 <div class="md:w-2/3 text-center md:text-left">
                     <h2 class="text-4xl font-bold text-white mb-4">Halo, Saya Iqbal Fadil</h2>
                     <p class="text-gray-300 mb-6 text-lg">
-                        Saya adalah seorang kreator visual dan pengembang web dengan hasrat untuk menggabungkan estetika dan fungsionalitas. Dengan latar belakang di bidang fotografi dan videografi, saya membawa perspektif unik dalam setiap proyek digital yang saya kerjakan, memastikan setiap detail memiliki makna dan tujuan.
+                        Seorang pemuda yang memiliki minat di bidang Photography, Videography dan Desain Editing. Mengekspresikan diri dan juga mengabadikan momen random ataupun momen bermakna yang bisa ditemukan di berbagai tempat
                     </p>
                     <div class="flex justify-center md:justify-start space-x-5">
                         <a href="https://www.instagram.com/fadilif_?igsh=enA4ZTd4ZTBiaW85" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-8 h-8"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="youtube" class="w-8 h-8"></i></a>
+                        <a href="https://youtube.com/@afsansnusantara-j2v?si=iBU4FFy0cPMwgpVX" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="youtube" class="w-8 h-8"></i></a>
                         <a href="https://www.facebook.com/profile.php?id=100093433513369&mibextid=rS40aB7S9Ucbxw6v" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-8 h-8"></i></a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="github" class="w-8 h-8"></i></a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
@@ -296,6 +280,7 @@
                  <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="pantai.jpg" data-category="Fotografi" data-title="Suasana Pantai" data-description="Fotografi Suasana pantai dengan pencahayaan alami supaya terlihat natural tapi dengan sedikit penyesuaian editing."> <img src="pantai.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Suasana Pantai</h3> </div> </div>
                  <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="candith.jpg" data-category="Fotografi" data-title="Human Interest" data-description="Sesi Fotography tentang kegiatan kelompok orang seperti mengobrol dan lainnya, dengan editing fokus dan warna yang hangat."> <img src="candith.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Human Interest</h3> </div> </div>
                  <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="sore.jpeg" data-category="Fotografi" data-title="Senja pantai" data-description="Sesi pemotretan yang menangkap keindahan senja di pantai dengan subjek dan terlihat dramatis."> <img src="sore.jpeg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Senja Pantai</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Candith1.JPG" data-category="Fotografi" data-title="Candith Dokumentasi" data-description="Dokumentasi Candith dalam momen di sebuah organisasi, tampak wajah bahagia dari subjek"> <img src="Candith1.JPG" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Candith Dokumentasi</h3> </div> </div>
             </div>
         </div>
     </section>
@@ -315,11 +300,10 @@
             </div>
              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Videografi Items -->
-                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/aVbORbqzPPxvmxrx" data-category="Videografi" data-title="Iklan Kopi Nusantara" data-description="Video komersial yang menampilkan proses pembuatan kopi dari biji hingga cangkir. Menggunakan teknik sinematik dan slow-motion untuk menonjolkan kualitas dan aroma produk."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Videografi+Komersial" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Iklan Kopi Nusantara</h3> </div> </div>
-                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/djoXsRVYFAg?autoplay=1&controls=0" data-category="Videografi" data-title="Jelajah Hutan Kalimantan" data-description="Film dokumenter pendek yang mengikuti perjalanan seorang peneliti di pedalaman hutan Kalimantan. Pengambilan gambar berfokus pada keindahan alam dan interaksi dengan satwa liar."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+Dokumenter" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Jelajah Hutan Kalimantan</h3> </div> </div>
-                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="local-video" data-video-src="https://www.w3schools.com/html/mov_bbb.mp4" data-category="Videografi (File)" data-title="Pemandangan Alam" data-description="Contoh pemutaran video dari file lokal (misal: .mp4). Video ini menampilkan pemandangan alam yang indah dengan seekor kupu-kupu."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+File+Lokal" alt="Proyek Video Lokal" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi (File)</p> <h3 class="text-xl font-bold text-white">Pemandangan Alam</h3> </div> </div>
-                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/z-QY-3f-v-I?autoplay=1&controls=0" data-category="Videografi" data-title="Profil Atlet Inspiratif" data-description="Video dokumenter singkat yang mengisahkan perjalanan seorang atlet muda dalam meraih mimpinya. Menyoroti dedikasi, latihan keras, dan semangat pantang menyerah."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+Profil" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Profil Atlet Inspiratif</h3> </div> </div>
-                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0" data-category="Videografi" data-title="Video Musik Eksperimental" data-description="Sebuah video musik untuk band indie dengan konsep visual yang sureal dan eksperimental. Menggabungkan teknik sinematografi kreatif dengan penceritaan visual yang abstrak."> <img src="https://placehold.co/600x400/171717/FFFFFF?text=Video+Musik" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Video Musik Eksperimental</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/cg-wqiRyc1M?autoplay=1&controls=0" data-category="Videografi" data-title="Film Pendek Non Suara" data-description="Video Film Pendek Tentang bebas berkarya dengan gaya non percakapan dan hanya terdapat backsound instrumental."> <img src="Bebas berkarya.jpg" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Film Pendek Bebas Berkarya</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/W4VnOJYBh90?autoplay=1&controls=0" data-category="Videografi" data-title="Dokumentasi Kegiatan Bazar" data-description="Dokumentasi Pendek Kegiatan Bazar, Jalan sehat dan donor darah di MA Al-Furqan Kebumen tahun 2024."> <img src="Thumbnail.jpg" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Dokumentasi Kegiatan MA AF</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/SMp6UKQ4_JY?autoplay=1&controls=0" data-category="Videografi" data-title="Tugas Video Bahasa Inggris" data-description="Video untuk Tugas Bahasa Inggris tentang convercation asking/giving advice."> <img src="English.jpg" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">English Exercise Video</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="video" data-video-src="https://www.youtube.com/embed/gY05EUVVkPU?autoplay=1&controls=0" data-category="Videografi" data-title="Video Perkenalan Maba" data-description="Video Perkenalan untuk Persaratan P2k dengan konsep cinematic dan juga simple."> <img src="Perkenalan.jpg" alt="Proyek Videografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Videografi</p> <h3 class="text-xl font-bold text-white">Video Perkenalan Maba</h3> </div> </div>
             </div>
         </div>
     </section>
@@ -601,4 +585,5 @@
     </script>
 </body>
 </html>
+
 
