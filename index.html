@@ -42,17 +42,6 @@
             opacity: 0;
             visibility: hidden;
         }
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #4f4f4f;
-            border-top-color: #0ea5e9; /* sky-500 */
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
 
         /* Styling untuk efek mengetik */
         .typing-cursor {
@@ -136,11 +125,6 @@
     </style>
 </head>
 <body class="overflow-x-hidden">
-
-    <!-- Animasi Welcome -->
-    <div id="splash-screen">
-        <div class="loader"></div>
-    </div>
 
     <!-- Header & Navigasi -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -296,6 +280,7 @@
                  <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="pantai.jpg" data-category="Fotografi" data-title="Suasana Pantai" data-description="Fotografi Suasana pantai dengan pencahayaan alami supaya terlihat natural tapi dengan sedikit penyesuaian editing."> <img src="pantai.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Suasana Pantai</h3> </div> </div>
                  <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="candith.jpg" data-category="Fotografi" data-title="Human Interest" data-description="Sesi Fotography tentang kegiatan kelompok orang seperti mengobrol dan lainnya, dengan editing fokus dan warna yang hangat."> <img src="candith.jpg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Human Interest</h3> </div> </div>
                  <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="sore.jpeg" data-category="Fotografi" data-title="Senja pantai" data-description="Sesi pemotretan yang menangkap keindahan senja di pantai dengan subjek dan terlihat dramatis."> <img src="sore.jpeg" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Senja Pantai</h3> </div> </div>
+                 <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col" data-type="image" data-img-src="Candith1.JPG" data-category="Fotografi" data-title="Candith Dokumentasi" data-description="Dokumentasi Candith dalam momen di sebuah organisasi, tampak wajah bahagia dari subjek"> <img src="Candith1.JPG" alt="Proyek Fotografi" class="w-full h-60 object-cover flex-shrink-0"> <div class="p-5 flex flex-col flex-grow"> <p class="text-sm text-sky-400">Fotografi</p> <h3 class="text-xl font-bold text-white">Candith Dokumentasi</h3> </div> </div>
             </div>
         </div>
     </section>
@@ -600,5 +585,6 @@
     </script>
 </body>
 </html>
+
 
 
