@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Afsans</title>
+    <title>Portofolio & Admin CMS Afsans</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +26,7 @@
             overflow: hidden;
         }
 
-        /* Typing Effect Cursor */
+        /* Cursor Effect */
         .typing-cursor {
             display: inline-block;
             width: 2px;
@@ -42,15 +42,15 @@
         /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Modal Visibility Transitions */
+        /* Modal Transitions */
         .modal-base {
             opacity: 0;
             visibility: hidden;
@@ -68,9 +68,8 @@
             transform: scale(1);
         }
 
-        /* Gallery Transitions */
         .gallery-page {
-            transition: opacity 0.4s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
         }
         
         /* Custom Scrollbar */
@@ -93,7 +92,7 @@
         .cursor-grab { cursor: grab; }
         .cursor-grabbing { cursor: grabbing; }
 
-        /* Toast Notification */
+        /* Toast Popup */
         #toast {
             transform: translateY(100px);
             opacity: 0;
@@ -107,7 +106,7 @@
 </head>
 <body class="bg-black text-gray-200 antialiased selection:bg-sky-500 selection:text-white">
 
-    <!-- Header & Navigasi -->
+    <!-- Header & Navigasi Utama -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" id="site-logo-text" class="text-2xl font-bold text-white hover:text-sky-400 transition-colors">Afsans.</a>
@@ -122,7 +121,7 @@
                 </button>
             </div>
         </div>
-        <!-- Menu Mobile -->
+        <!-- Mobile Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-gray-800">
             <a href="#about" class="block py-3 px-6 hover:bg-gray-800">Tentang Saya</a>
             <a href="#projects" class="block py-3 px-6 hover:bg-gray-800">Proyek</a>
@@ -147,7 +146,7 @@
             </div>
         </section>
 
-        <!-- About Section (Section 2) -->
+        <!-- About Section -->
         <section id="about" class="container mx-auto px-6 py-24 reveal">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/3">
@@ -159,23 +158,23 @@
                         Seorang pemuda yang memiliki minat di bidang Photography, Videography dan Desain Editing. Mengekspresikan diri dan juga mengabadikan momen random ataupun momen bermakna yang bisa ditemukan di berbagai tempat.
                     </p>
 
-                    <!-- Social Media Button Links (Teks Murni tanpa Icon & Tanpa WA) -->
+                    <!-- Link Medsos Teks Murni (Tanpa Icon & Tanpa WA) -->
                     <div id="social-links-container" class="flex flex-wrap justify-center md:justify-start gap-3 mt-4">
-                        <!-- Medsos dirender via JavaScript -->
+                        <!-- Rendered via JS -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Category Section -->
+        <!-- Karya & Proyek Section -->
         <section id="projects" class="py-24 overflow-hidden relative">
             <div class="container mx-auto px-6 text-center mb-8 reveal">
                 <h2 class="text-4xl font-bold text-white mb-2">Karya & Proyek</h2>
-                <p class="text-gray-400">Pilih folder bidang di bawah untuk melihat galeri karya selengkapnya.</p>
+                <p class="text-gray-400">Pilih kategori di bawah untuk melihat galeri karya selengkapnya.</p>
             </div>
 
             <div class="container mx-auto px-6 relative reveal">
-                <!-- Ketentuan 3: Tombol Geser < > -->
+                <!-- Navigasi Geser (< >) -->
                 <div class="flex justify-end gap-2 mb-4">
                     <button id="scroll-left-btn" aria-label="Geser Kiri" class="p-3 bg-gray-900 hover:bg-sky-500 text-gray-300 hover:text-white border border-gray-800 hover:border-sky-500 rounded-full transition-all shadow-lg active:scale-95 flex items-center justify-center">
                         <i data-lucide="chevron-left" class="w-6 h-6"></i>
@@ -185,20 +184,14 @@
                     </button>
                 </div>
 
+                <!-- Scrollable Container Cards -->
                 <div id="category-scroll-container" class="overflow-x-auto pb-6 custom-scrollbar cursor-grab scroll-smooth">
                     <div class="flex justify-start gap-6">
 
-                        <!-- Ketentuan 2: Format Portrait (w-72 h-[420px]) -->
-                        <!-- Category Card 1: Fotografi -->
+                        <!-- Card 1: Fotografi -->
                         <div class="category-card cursor-pointer group relative rounded-2xl overflow-hidden w-72 h-[420px] flex-shrink-0 border border-gray-800 hover:border-sky-500/50 transition-all duration-300 shadow-xl" data-target-page="fotografi-page">
-                            <img src="senja.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80'" alt="Galeri Fotografi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <img src="senja.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80'" alt="Fotografi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            
-                            <!-- Folder Badge Icon -->
-                            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-gray-700 text-xs font-semibold text-sky-400 flex items-center gap-1.5">
-                                <i data-lucide="folder" class="w-3.5 h-3.5"></i> Folder Karya
-                            </div>
-
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                                 <h3 class="text-2xl font-bold">Fotografi</h3>
                                 <p class="text-gray-300 mt-2 text-xs leading-relaxed">Menangkap momen dan cerita melalui kehangatan lensa.</p>
@@ -208,16 +201,10 @@
                             </div>
                         </div>
 
-                        <!-- Category Card 2: Videografi -->
+                        <!-- Card 2: Videografi -->
                         <div class="category-card cursor-pointer group relative rounded-2xl overflow-hidden w-72 h-[420px] flex-shrink-0 border border-gray-800 hover:border-sky-500/50 transition-all duration-300 shadow-xl" data-target-page="videografi-page">
-                            <img src="Bebas berkarya.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=80'" alt="Galeri Videografi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <img src="Bebas berkarya.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=80'" alt="Videografi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            
-                            <!-- Folder Badge Icon -->
-                            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-gray-700 text-xs font-semibold text-purple-400 flex items-center gap-1.5">
-                                <i data-lucide="folder" class="w-3.5 h-3.5"></i> Folder Karya
-                            </div>
-
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                                 <h3 class="text-2xl font-bold">Videografi</h3>
                                 <p class="text-gray-300 mt-2 text-xs leading-relaxed">Menghidupkan cerita dengan gambar bergerak & sinematik.</p>
@@ -227,16 +214,10 @@
                             </div>
                         </div>
 
-                        <!-- Category Card 3: Desain Grafis -->
+                        <!-- Card 3: Desain Grafis -->
                         <div class="category-card cursor-pointer group relative rounded-2xl overflow-hidden w-72 h-[420px] flex-shrink-0 border border-gray-800 hover:border-sky-500/50 transition-all duration-300 shadow-xl" data-target-page="desain-grafis-page">
-                            <img src="Info islam.png" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=80'" alt="Galeri Desain Grafis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <img src="Info islam.png" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=80'" alt="Desain Grafis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            
-                            <!-- Folder Badge Icon -->
-                            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-gray-700 text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
-                                <i data-lucide="folder" class="w-3.5 h-3.5"></i> Folder Karya
-                            </div>
-
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                                 <h3 class="text-2xl font-bold">Desain Grafis</h3>
                                 <p class="text-gray-300 mt-2 text-xs leading-relaxed">Identitas visual, branding, dan desain promosi kreatif.</p>
@@ -246,17 +227,10 @@
                             </div>
                         </div>
 
-                        <!-- Ketentuan 3: Tambahkan 1 folder baru (Digital Art & Motion) -->
-                        <!-- Category Card 4: Digital Art & Motion -->
+                        <!-- Card 4: Digital Art & Motion -->
                         <div class="category-card cursor-pointer group relative rounded-2xl overflow-hidden w-72 h-[420px] flex-shrink-0 border border-gray-800 hover:border-sky-500/50 transition-all duration-300 shadow-xl" data-target-page="digital-art-page">
                             <img src="Typo4.png" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80'" alt="Digital Art & Motion" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                            
-                            <!-- Folder Badge Icon -->
-                            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-gray-700 text-xs font-semibold text-amber-400 flex items-center gap-1.5">
-                                <i data-lucide="folder-plus" class="w-3.5 h-3.5"></i> Folder Karya Baru
-                            </div>
-
                             <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                                 <h3 class="text-2xl font-bold">Digital Art & Motion</h3>
                                 <p class="text-gray-300 mt-2 text-xs leading-relaxed">Eksperimen seni digital, efek visual, dan ilustrasi modern.</p>
@@ -283,98 +257,76 @@
         </section>
     </main>
 
-    <!-- GALLERY PAGES START -->
-    <!-- Fotografi Page -->
+    <!-- GALERI TIAP KATEGORI -->
     <section id="fotografi-page" class="gallery-page hidden min-h-screen py-24">
         <div class="container mx-auto px-6">
-            <div class="flex items-center mb-8">
-                <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white transition-colors bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
-                    <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
-                </button>
-            </div>
+            <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white mb-8 bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
+            </button>
             <div class="text-center mb-12">
                  <h2 class="text-4xl font-bold text-white mb-2">Galeri Fotografi</h2>
-                 <p class="text-gray-400">Kumpulan karya fotografi saya. Klik gambar untuk melihat detail.</p>
+                 <p class="text-gray-400">Kumpulan karya fotografi saya.</p>
             </div>
-            <div id="gallery-fotografi-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Items populated dynamically via JS -->
-            </div>
+            <div id="gallery-fotografi-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
 
-    <!-- Videografi Page -->
     <section id="videografi-page" class="gallery-page hidden min-h-screen py-24">
         <div class="container mx-auto px-6">
-            <div class="flex items-center mb-8">
-                <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white transition-colors bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
-                    <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
-                </button>
-            </div>
-             <div class="text-center mb-12">
+            <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white mb-8 bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
+            </button>
+            <div class="text-center mb-12">
                  <h2 class="text-4xl font-bold text-white mb-2">Galeri Videografi</h2>
-                 <p class="text-gray-400">Kumpulan karya videografi saya. Klik item untuk memutar video.</p>
+                 <p class="text-gray-400">Kumpulan karya videografi saya.</p>
             </div>
-            <div id="gallery-videografi-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Items populated dynamically via JS -->
-            </div>
+            <div id="gallery-videografi-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
 
-    <!-- Desain Grafis Page -->
     <section id="desain-grafis-page" class="gallery-page hidden min-h-screen py-24">
         <div class="container mx-auto px-6">
-            <div class="flex items-center mb-8">
-                <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white transition-colors bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
-                    <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
-                </button>
-            </div>
-             <div class="text-center mb-12">
+            <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white mb-8 bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
+            </button>
+            <div class="text-center mb-12">
                  <h2 class="text-4xl font-bold text-white mb-2">Galeri Desain Grafis</h2>
                  <p class="text-gray-400">Kumpulan karya desain grafis saya.</p>
             </div>
-            <div id="gallery-desain-grafis-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Items populated dynamically via JS -->
-            </div>
+            <div id="gallery-desain-grafis-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
 
-    <!-- Ketentuan 3: Page Halaman Galeri Folder ke-4 (Digital Art & Motion) -->
     <section id="digital-art-page" class="gallery-page hidden min-h-screen py-24">
         <div class="container mx-auto px-6">
-            <div class="flex items-center mb-8">
-                <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white transition-colors bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
-                    <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
-                </button>
-            </div>
-             <div class="text-center mb-12">
+            <button class="back-to-main-btn flex items-center text-gray-400 hover:text-white mb-8 bg-gray-900 px-4 py-2 rounded-lg border border-gray-800">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali
+            </button>
+            <div class="text-center mb-12">
                  <h2 class="text-4xl font-bold text-white mb-2">Galeri Digital Art & Motion</h2>
-                 <p class="text-gray-400">Kumpulan karya seni digital, efek visual, dan manipulasi gambar.</p>
+                 <p class="text-gray-400">Kumpulan karya seni digital dan visual motion.</p>
             </div>
-            <div id="gallery-digital-art-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Items populated dynamically via JS -->
-            </div>
+            <div id="gallery-digital-art-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
-    <!-- GALLERY PAGES END -->
 
     <!-- Footer -->
     <footer class="bg-gray-900/80 border-t border-gray-800 py-6 mt-12">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm gap-4">
             <p>&copy; 2026 <span id="footer-author-text">Afsans</span>. Dibuat dengan semangat.</p>
-            <!-- Ketentuan 1: Cukup tampilkan icon gembok saja di footer -->
-            <button id="admin-login-btn-footer" title="Login Admin" class="p-2 text-gray-500 hover:text-sky-400 hover:bg-gray-800 rounded-full transition-colors cursor-pointer select-none">
+            <!-- Tombol Gembok Admin di Footer -->
+            <button id="admin-login-btn-footer" title="Login Admin" class="p-2 text-gray-500 hover:text-sky-400 hover:bg-gray-800 rounded-full transition-colors cursor-pointer">
                 <i data-lucide="lock" class="w-4 h-4"></i>
             </button>
         </div>
     </footer>
 
-    <!-- Visitor Detail Modal -->
+    <!-- Modal Detail Karya (Pengunjung) -->
     <div id="project-modal" class="modal-base fixed inset-0 bg-black/90 backdrop-blur-md z-[110] flex justify-center items-center p-4">
         <div class="modal-box bg-gray-900 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden border border-gray-800 relative">
             <div class="md:w-2/3 bg-black flex items-center justify-center p-2 min-h-[250px]">
-                <img id="modal-img" src="" alt="Project Image" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80'" class="w-auto h-auto max-w-full max-h-[75vh] object-contain hidden">
-                <iframe id="modal-video" class="w-full aspect-video hidden" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <video id="modal-video-local" class="w-full max-h-[75vh] aspect-video hidden" controls autoplay muted loop playsinline></video>
+                <img id="modal-img" src="" alt="Detail Karya" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80'" class="w-auto h-auto max-w-full max-h-[75vh] object-contain hidden">
+                <iframe id="modal-video" class="w-full aspect-video hidden" src="" title="Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="md:w-1/3 p-6 flex flex-col overflow-y-auto">
                 <div class="flex-grow">
@@ -389,7 +341,7 @@
         </div>
     </div>
 
-    <!-- ADMIN LOGIN MODAL -->
+    <!-- Modal Admin Login -->
     <div id="admin-login-modal" class="modal-base fixed inset-0 bg-black/80 backdrop-blur-md z-[120] flex justify-center items-center p-4">
         <div class="modal-box bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-md p-6 relative">
             <button id="close-login-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
@@ -404,10 +356,10 @@
             </div>
             <form id="admin-login-form" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-medium text-gray-400 mb-1">PIN / Password Admin</label>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">PIN Admin</label>
                     <input type="password" id="admin-pin-input" placeholder="Masukkan PIN" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 text-center text-lg tracking-widest font-mono" required>
                 </div>
-                <p id="login-error-msg" class="text-xs text-red-400 text-center hidden">PIN Admin Salah! Gunakan PIN default: 1234</p>
+                <p id="login-error-msg" class="text-xs text-red-400 text-center hidden">PIN Admin Salah! Gunakan: 1234</p>
                 <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-sky-500/20">
                     Masuk Dashboard
                 </button>
@@ -415,11 +367,10 @@
         </div>
     </div>
 
-    <!-- ADMIN DASHBOARD MAIN MODAL -->
+    <!-- Modal Dashboard Admin Main -->
     <div id="admin-dashboard-modal" class="modal-base fixed inset-0 bg-black/95 backdrop-blur-md z-[130] flex justify-center items-center p-2 sm:p-6 overflow-hidden">
         <div class="modal-box bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-6xl h-[92vh] flex flex-col shadow-2xl relative overflow-hidden">
             
-            <!-- Dashboard Header -->
             <div class="bg-gray-950 border-b border-gray-800 px-6 py-4 flex justify-between items-center flex-shrink-0">
                 <div class="flex items-center gap-3">
                     <div class="bg-sky-500/20 text-sky-400 p-2 rounded-lg">
@@ -453,7 +404,6 @@
                 </button>
             </div>
 
-            <!-- Dashboard Content Container -->
             <div class="p-6 overflow-y-auto flex-grow custom-scrollbar">
                 
                 <!-- TAB 1: KELOLA KARYA -->
@@ -468,7 +418,6 @@
                         </button>
                     </div>
 
-                    <!-- Filter Kategori Works (Termasuk Digital Art & Motion) -->
                     <div class="flex gap-2 flex-wrap">
                         <button class="work-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-white" data-filter="All">Semua</button>
                         <button class="work-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-800 text-gray-400 hover:text-white" data-filter="Fotografi">Fotografi</button>
@@ -477,7 +426,6 @@
                         <button class="work-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-800 text-gray-400 hover:text-white" data-filter="Digital Art & Motion">Digital Art & Motion</button>
                     </div>
 
-                    <!-- Work Table -->
                     <div class="overflow-x-auto border border-gray-800 rounded-xl bg-gray-950">
                         <table class="w-full text-left text-xs text-gray-300">
                             <thead class="bg-gray-900 text-gray-400 uppercase tracking-wider font-semibold border-b border-gray-800">
@@ -489,9 +437,7 @@
                                     <th class="py-3 px-4 text-center">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody id="admin-works-table-body" class="divide-y divide-gray-800">
-                                <!-- Dynamic Rows -->
-                            </tbody>
+                            <tbody id="admin-works-table-body" class="divide-y divide-gray-800"></tbody>
                         </table>
                     </div>
                 </div>
@@ -499,17 +445,16 @@
                 <!-- TAB 2: EDIT TEKS & PROFIL -->
                 <div id="tab-content" class="dashboard-tab-content space-y-6 hidden">
                     <form id="site-content-form" class="space-y-6">
-                        <!-- Hero & Title Section -->
                         <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-4">
-                            <h4 class="text-sm font-bold text-sky-400 uppercase tracking-wider">Halaman Utama (Hero Section)</h4>
+                            <h4 class="text-sm font-bold text-sky-400 uppercase tracking-wider">Halaman Utama (Hero)</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Nama Brand / Header Text</label>
+                                    <label class="block text-xs text-gray-400 mb-1">Nama Brand</label>
                                     <input type="text" id="input-brand-name" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-sky-500">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Kata Animasi Typing (Pisahkan dengan koma)</label>
-                                    <input type="text" id="input-typing-words" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-sky-500" placeholder="Fotografer, Videografer, Desainer">
+                                    <label class="block text-xs text-gray-400 mb-1">Kata Animasi Typing (Pisahkan Koma)</label>
+                                    <input type="text" id="input-typing-words" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-sky-500">
                                 </div>
                             </div>
                             <div>
@@ -518,31 +463,29 @@
                             </div>
                         </div>
 
-                        <!-- Profile Section -->
                         <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-4">
-                            <h4 class="text-sm font-bold text-sky-400 uppercase tracking-wider">Tentang Saya (About Section)</h4>
+                            <h4 class="text-sm font-bold text-sky-400 uppercase tracking-wider">Tentang Saya (About)</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Nama Lengkap / Judul</label>
+                                    <label class="block text-xs text-gray-400 mb-1">Nama / Judul</label>
                                     <input type="text" id="input-profile-name" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-sky-500">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-gray-400 mb-1">URL Foto Profil (Gambar/File Name)</label>
+                                    <label class="block text-xs text-gray-400 mb-1">URL Foto Profil</label>
                                     <input type="text" id="input-profile-img" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-sky-500">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-xs text-gray-400 mb-1">Deskripsi Bio Singkat</label>
+                                <label class="block text-xs text-gray-400 mb-1">Deskripsi Bio</label>
                                 <textarea id="input-profile-bio" rows="4" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-sky-500"></textarea>
                             </div>
                         </div>
 
-                        <!-- Contact & Social Media Links -->
                         <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-4">
                             <h4 class="text-sm font-bold text-sky-400 uppercase tracking-wider">Kontak & Media Sosial</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Nomor WhatsApp (Format: 628xxx)</label>
+                                    <label class="block text-xs text-gray-400 mb-1">Nomor WhatsApp (628xxx)</label>
                                     <input type="text" id="input-wa-number" class="w-full bg-gray-900 border border-gray-800 rounded-lg p-2.5 text-xs text-white focus:border-sky-500">
                                 </div>
                                 <div>
@@ -566,25 +509,24 @@
                     </form>
                 </div>
 
-                <!-- TAB 3: SETTINGS & BACKUP -->
+                <!-- TAB 3: BACKUP & RESET -->
                 <div id="tab-settings" class="dashboard-tab-content space-y-6 hidden">
                     <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-4">
-                        <h4 class="text-sm font-bold text-sky-400 uppercase tracking-wider">Manajemen Data JSON (Backup)</h4>
-                        <p class="text-xs text-gray-400">Unduh seluruh isi karya & teks portofolio kamu menjadi file JSON, atau restore data dari file backup.</p>
+                        <h4 class="text-sm font-bold text-sky-400 uppercase tracking-wider">Backup & Restore JSON Data</h4>
                         <div class="flex flex-wrap gap-3 pt-2">
                             <button id="export-json-btn" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 border border-gray-700">
-                                <i data-lucide="download" class="w-4 h-4"></i> Export Data Backup (.json)
+                                <i data-lucide="download" class="w-4 h-4"></i> Export Backup (.json)
                             </button>
                             <label class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 border border-gray-700 cursor-pointer">
-                                <i data-lucide="upload" class="w-4 h-4"></i> Import Restore Data (.json)
+                                <i data-lucide="upload" class="w-4 h-4"></i> Restore Data (.json)
                                 <input type="file" id="import-json-input" accept=".json" class="hidden">
                             </label>
                         </div>
                     </div>
 
                     <div class="bg-red-950/20 p-5 rounded-xl border border-red-900/40 space-y-3">
-                        <h4 class="text-sm font-bold text-red-400 uppercase tracking-wider">Reset Ke Data Bawaan (Default)</h4>
-                        <p class="text-xs text-gray-400">Aksi ini akan menghapus semua perubahan LocalStorage dan mengembalikan portofolio ke karya awal.</p>
+                        <h4 class="text-sm font-bold text-red-400 uppercase tracking-wider">Reset Ke Data Bawaan</h4>
+                        <p class="text-xs text-gray-400">Menghapus penyimpanan lokal dan mengembalikan portofolio ke awal.</p>
                         <button id="reset-default-btn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2">
                             <i data-lucide="refresh-cw" class="w-4 h-4"></i> Reset Semua Data
                         </button>
@@ -595,7 +537,7 @@
         </div>
     </div>
 
-    <!-- ADD / EDIT WORK FORM MODAL -->
+    <!-- Modal Form Tambah/Edit Karya -->
     <div id="work-form-modal" class="modal-base fixed inset-0 bg-black/90 backdrop-blur-md z-[140] flex justify-center items-center p-4">
         <div class="modal-box bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-lg p-6 relative">
             <button id="close-work-form-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
@@ -618,7 +560,7 @@
 
                 <div>
                     <label class="block text-xs text-gray-400 mb-1">Judul Karya</label>
-                    <input type="text" id="crud-work-title" placeholder="Contoh: Potret Senja Kebumen" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500" required>
+                    <input type="text" id="crud-work-title" placeholder="Judul Karya" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500" required>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
@@ -631,19 +573,18 @@
                     </div>
                     <div>
                         <label class="block text-xs text-gray-400 mb-1">Thumbnail Cover (Opsional)</label>
-                        <input type="text" id="crud-work-thumb" placeholder="File image/URL" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500">
+                        <input type="text" id="crud-work-thumb" placeholder="URL / Nama File" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs text-gray-400 mb-1">Source URL Media (Gambar / YouTube Embed Link)</label>
-                    <input type="text" id="crud-work-src" placeholder="senja.jpg atau https://www.youtube.com/embed/..." class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500" required>
-                    <p class="text-[10px] text-gray-500 mt-1">Gunakan URL link publik atau nama file image di folder project kamu.</p>
+                    <label class="block text-xs text-gray-400 mb-1">URL / File Source Media</label>
+                    <input type="text" id="crud-work-src" placeholder="senja.jpg atau Embed YouTube Link" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500" required>
                 </div>
 
                 <div>
                     <label class="block text-xs text-gray-400 mb-1">Deskripsi Karya</label>
-                    <textarea id="crud-work-desc" rows="3" placeholder="Jelaskan secara singkat mengenai karya ini..." class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500" required></textarea>
+                    <textarea id="crud-work-desc" rows="3" placeholder="Deskripsi karya..." class="w-full bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs text-white focus:border-sky-500" required></textarea>
                 </div>
 
                 <div class="flex gap-3 pt-2">
@@ -654,14 +595,14 @@
         </div>
     </div>
 
-    <!-- CUSTOM CONFIRMATION MODAL -->
+    <!-- Modal Konfirmasi -->
     <div id="confirm-modal" class="modal-base fixed inset-0 bg-black/80 backdrop-blur-md z-[150] flex justify-center items-center p-4">
         <div class="modal-box bg-gray-900 border border-gray-800 rounded-2xl w-full max-w-sm p-6 text-center relative">
             <div class="w-12 h-12 bg-red-500/10 text-red-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-red-500/20">
                 <i data-lucide="alert-triangle" class="w-6 h-6"></i>
             </div>
             <h3 id="confirm-modal-title" class="text-lg font-bold text-white mb-2">Konfirmasi Aksi</h3>
-            <p id="confirm-modal-msg" class="text-xs text-gray-400 mb-6">Apakah kamu yakin ingin melanjutkan tindakan ini?</p>
+            <p id="confirm-modal-msg" class="text-xs text-gray-400 mb-6">Apakah Anda yakin ingin melanjutkan?</p>
             <div class="flex gap-3">
                 <button id="confirm-modal-cancel" class="w-1/2 bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2.5 rounded-lg text-xs transition-all">Batal</button>
                 <button id="confirm-modal-action" class="w-1/2 bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-lg text-xs transition-all shadow-lg shadow-red-600/20">Lanjutkan</button>
@@ -669,13 +610,13 @@
         </div>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
+    <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-6 right-6 bg-sky-500 text-white px-5 py-3 rounded-xl shadow-2xl z-[200] flex items-center gap-3 text-xs font-semibold">
         <i data-lucide="check-circle" class="w-5 h-5"></i>
         <span id="toast-message">Data berhasil disimpan!</span>
     </div>
 
-    <!-- JAVASCRIPT ENGINE -->
+    <!-- SCRIPT APPLICATION LOGIC -->
     <script>
         const DEFAULT_PORTFOLIO_DATA = {
             site: {
@@ -692,37 +633,37 @@
             },
             works: [
                 // Fotografi
-                { id: "fot-1", type: "image", category: "Fotografi", title: "Potret Senja", imgSrc: "senja.jpg", description: "Sebuah sesi pemotretan potret yang menangkap kehangatan cahaya matahari terbenam. Proyek ini berfokus pada permainan bayangan dan cahaya alami untuk menciptakan mood yang dramatis dan emosional." },
-                { id: "fot-2", type: "image", category: "Fotografi", title: "Lampu Merah", imgSrc: "lalin.jpg", description: "Sesi fotografi jalanan yang berfokus pada suatu objek supaya terlihat mendramatisir." },
-                { id: "fot-3", type: "image", category: "Fotografi", title: "Pemandangan Sawah", imgSrc: "sawah.jpeg", description: "Seri foto yang mengeksplorasi keindahan dan kegiatan di sawah yang berfokus pada suatu objek." },
-                { id: "fot-4", type: "image", category: "Fotografi", title: "Foto Hewan", imgSrc: "kucing.jpg", description: "Fotografi hewan dengan tekhnik editing melalui lightroom sehingga menampilkan warna yang cocok dengan objek." },
-                { id: "fot-5", type: "image", category: "Fotografi", title: "Suasana Pantai", imgSrc: "pantai.jpg", description: "Fotografi Suasana pantai dengan pencahayaan alami supaya terlihat natural tapi dengan sedikit penyesuaian editing." },
-                { id: "fot-6", type: "image", category: "Fotografi", title: "Human Interest", imgSrc: "candith.jpg", description: "Sesi Fotography tentang kegiatan kelompok orang seperti mengobrol dan lainnya, dengan editing fokus dan warna yang hangat." },
-                { id: "fot-7", type: "image", category: "Fotografi", title: "Senja Pantai", imgSrc: "sore.jpeg", description: "Sesi pemotretan yang menangkap keindahan senja di pantai dengan subjek dan terlihat dramatis." },
-                { id: "fot-8", type: "image", category: "Fotografi", title: "Candith Dokumentasi", imgSrc: "Candith1.JPG", description: "Dokumentasi Candith dalam momen di sebuah organisasi, tampak wajah bahagia dari subjek." },
+                { id: "fot-1", type: "image", category: "Fotografi", title: "Potret Senja", imgSrc: "senja.jpg", description: "Sesi pemotretan potret yang menangkap kehangatan cahaya matahari terbenam." },
+                { id: "fot-2", type: "image", category: "Fotografi", title: "Lampu Merah", imgSrc: "lalin.jpg", description: "Sesi fotografi jalanan yang berfokus pada objek dengan efek dramatis." },
+                { id: "fot-3", type: "image", category: "Fotografi", title: "Pemandangan Sawah", imgSrc: "sawah.jpeg", description: "Seri foto keindahan dan kegiatan di sawah." },
+                { id: "fot-4", type: "image", category: "Fotografi", title: "Foto Hewan", imgSrc: "kucing.jpg", description: "Fotografi hewan dengan tone warna pas melalui penyesuaian Lightroom." },
+                { id: "fot-5", type: "image", category: "Fotografi", title: "Suasana Pantai", imgSrc: "pantai.jpg", description: "Fotografi suasana pantai dengan pencahayaan alami." },
+                { id: "fot-6", type: "image", category: "Fotografi", title: "Human Interest", imgSrc: "candith.jpg", description: "Fotografi aktivitas kelompok dengan warna hangat." },
+                { id: "fot-7", type: "image", category: "Fotografi", title: "Senja Pantai", imgSrc: "sore.jpeg", description: "Sesi pemotretan senja pantai dengan pencahayaan dramatis." },
+                { id: "fot-8", type: "image", category: "Fotografi", title: "Candith Dokumentasi", imgSrc: "Candith1.JPG", description: "Dokumentasi momen organisasi yang natural." },
 
                 // Videografi
-                { id: "vid-1", type: "video", category: "Videografi", title: "Film Pendek Bebas Berkarya", videoSrc: "https://www.youtube.com/embed/cg-wqiRyc1M?autoplay=1&controls=0", thumbSrc: "Bebas berkarya.jpg", description: "Video Film Pendek Tentang bebas berkarya dengan gaya non percakapan dan hanya terdapat backsound instrumental." },
-                { id: "vid-2", type: "video", category: "Videografi", title: "Dokumentasi Kegiatan MA AF", videoSrc: "https://www.youtube.com/embed/W4VnOJYBh90?autoplay=1&controls=0", thumbSrc: "Thumbnail.jpg", description: "Dokumentasi Pendek Kegiatan Bazar, Jalan sehat dan donor darah di MA Al-Furqan Kebumen tahun 2024." },
-                { id: "vid-3", type: "video", category: "Videografi", title: "English Exercise Video", videoSrc: "https://www.youtube.com/embed/SMp6UKQ4_JY?autoplay=1&controls=0", thumbSrc: "English.jpg", description: "Video untuk Tugas Bahasa Inggris tentang convercation asking/giving advice." },
-                { id: "vid-4", type: "video", category: "Videografi", title: "Video Perkenalan Maba", videoSrc: "https://www.youtube.com/embed/gY05EUVVkPU?autoplay=1&controls=0", thumbSrc: "Perkenalan.jpg", description: "Video Perkenalan untuk Persaratan P2k dengan konsep cinematic dan juga simple." },
+                { id: "vid-1", type: "video", category: "Videografi", title: "Film Pendek Bebas Berkarya", videoSrc: "https://www.youtube.com/embed/cg-wqiRyc1M?autoplay=1&controls=0", thumbSrc: "Bebas berkarya.jpg", description: "Video film pendek tanpa percakapan dengan latar musik instrumental." },
+                { id: "vid-2", type: "video", category: "Videografi", title: "Dokumentasi Kegiatan MA AF", videoSrc: "https://www.youtube.com/embed/W4VnOJYBh90?autoplay=1&controls=0", thumbSrc: "Thumbnail.jpg", description: "Dokumentasi kegiatan Bazar, jalan sehat, dan donor darah di MA Al-Furqan Kebumen." },
+                { id: "vid-3", type: "video", category: "Videografi", title: "English Exercise Video", videoSrc: "https://www.youtube.com/embed/SMp6UKQ4_JY?autoplay=1&controls=0", thumbSrc: "English.jpg", description: "Video tugas Bahasa Inggris mengenai percakapan asking/giving advice." },
+                { id: "vid-4", type: "video", category: "Videografi", title: "Video Perkenalan Maba", videoSrc: "https://www.youtube.com/embed/gY05EUVVkPU?autoplay=1&controls=0", thumbSrc: "Perkenalan.jpg", description: "Video perkenalan mahasiswa baru bertema sinematik simpel." },
 
                 // Desain Grafis
-                { id: "des-1", type: "image", category: "Desain Grafis", title: "Typography", imgSrc: "Typo4.png", description: "Sebuah Desain Typography yang dipadukan dengan unsur Photography didalamnya." },
-                { id: "des-2", type: "image", category: "Desain Grafis", title: "Banner Bimble", imgSrc: "Cerdikia.png", description: "Desain Banner untuk keperluan Bimbel. Menggabungkan elemen teks dan grafis." },
-                { id: "des-3", type: "image", category: "Desain Grafis", title: "Desain Kaos", imgSrc: "Desain Kaos.png", description: "Desain Kaos Random, disini saya mencoba membuat Kaos Yang berhubungan dengan kota saya." },
-                { id: "des-4", type: "image", category: "Desain Grafis", title: "Logo Makanan", imgSrc: "Logo Gamon.jpg", description: "Desain Logo makanan lebih tepatnya Seblak. Dibuat supaya orang lebih mengenal Seblak Gamon." },
-                { id: "des-5", type: "image", category: "Desain Grafis", title: "Pamflet Makanan", imgSrc: "Pamflet Tahu.jpg", description: "Sebuah Pamflet makanan yang tujuan dibuatnya tentu untuk mempromosikan produk makanannya." },
-                { id: "des-6", type: "image", category: "Desain Grafis", title: "Pamflet Minuman", imgSrc: "Es Jeruk.png", description: "Desain Pamflet Minuman yang didalamnya terdapat berbagai elemen menarik supaya orang lebih tertarik." },
-                { id: "des-7", type: "image", category: "Desain Grafis", title: "Poster Infografis", imgSrc: "Infografis.png", description: "Desain poster Infografis yang didalamnya terdapat informasi terhadap suatu hal dan diberi desain unik supaya menarik." },
-                { id: "des-8", type: "image", category: "Desain Grafis", title: "Sticker Buket", imgSrc: "Sticker.png", description: "Sticker untuk Buket, biasanya ditempel pada buket yang akan di pasarkan." },
-                { id: "des-9", type: "image", category: "Desain Grafis", title: "Desain Piagam", imgSrc: "Piagam.png", description: "Desain Piagam penghargaan untuk mengapresiasi individu/kelompok, elemen teks dan grafis." },
-                { id: "des-10", type: "image", category: "Desain Grafis", title: "Poster Islami", imgSrc: "Info islam.png", description: "Desain poster tentang islam seperti tips bahagia menurut islam maupun hal lainnya." },
-                { id: "des-11", type: "image", category: "Desain Grafis", title: "Logo Bimbel", imgSrc: "Aftech Bimbel.png", description: "Desain Logo Bimbel yang memiliki makna kesuksesan dan tekhnologi." },
+                { id: "des-1", type: "image", category: "Desain Grafis", title: "Typography", imgSrc: "Typo4.png", description: "Desain Tipografi berpadu dengan unsur fotografi." },
+                { id: "des-2", type: "image", category: "Desain Grafis", title: "Banner Bimbel", imgSrc: "Cerdikia.png", description: "Desain banner promosi bimbingan belajar." },
+                { id: "des-3", type: "image", category: "Desain Grafis", title: "Desain Kaos", imgSrc: "Desain Kaos.png", description: "Desain kaos kasual bertema identitas lokal." },
+                { id: "des-4", type: "image", category: "Desain Grafis", title: "Logo Makanan", imgSrc: "Logo Gamon.jpg", description: "Desain logo kuliner untuk produk makanan." },
+                { id: "des-5", type: "image", category: "Desain Grafis", title: "Pamflet Makanan", imgSrc: "Pamflet Tahu.jpg", description: "Pamflet promosi produk makanan kreatif." },
+                { id: "des-6", type: "image", category: "Desain Grafis", title: "Pamflet Minuman", imgSrc: "Es Jeruk.png", description: "Desain promosi minuman segar berkonsep menarik." },
+                { id: "des-7", type: "image", category: "Desain Grafis", title: "Poster Infografis", imgSrc: "Infografis.png", description: "Desain poster penyampaian informasi yang bersih dan rapi." },
+                { id: "des-8", type: "image", category: "Desain Grafis", title: "Sticker Buket", imgSrc: "Sticker.png", description: "Desain stiker kemasan buket produk kreatif." },
+                { id: "des-9", type: "image", category: "Desain Grafis", title: "Desain Piagam", imgSrc: "Piagam.png", description: "Desain piagam penghargaan formal." },
+                { id: "des-10", type: "image", category: "Desain Grafis", title: "Poster Islami", imgSrc: "Info islam.png", description: "Desain poster dengan kutipan dan pesan positif." },
+                { id: "des-11", type: "image", category: "Desain Grafis", title: "Logo Bimbel", imgSrc: "Aftech Bimbel.png", description: "Desain logo lembaga bimbingan teknologi." },
 
-                // Digital Art & Motion (Folder Kategori Ke-4)
-                { id: "dig-1", type: "image", category: "Digital Art & Motion", title: "Cyberpunk Manipulation", imgSrc: "Typo4.png", description: "Eksperimen digital art gaya cyberpunk dengan lighting neon dan retouching warna kontras." },
-                { id: "dig-2", type: "image", category: "Digital Art & Motion", title: "Surreal Landscape", imgSrc: "senja.jpg", description: "Manipulasi foto surealis yang menggabungkan lanskap alam dengan elemen geometris digital." }
+                // Digital Art & Motion
+                { id: "dig-1", type: "image", category: "Digital Art & Motion", title: "Cyberpunk Manipulation", imgSrc: "Typo4.png", description: "Karya manipulasi digital bertema cyberpunk dan pencahayaan neon." },
+                { id: "dig-2", type: "image", category: "Digital Art & Motion", title: "Surreal Landscape", imgSrc: "senja.jpg", description: "Manipulasi foto landscapes surealis dengan elemen abstrak." }
             ]
         };
 
@@ -769,7 +710,6 @@
         }
 
         function renderAllContent() {
-            // Render Site Info
             const site = portfolioData.site;
             document.getElementById('site-logo-text').textContent = site.brandName;
             document.getElementById('footer-author-text').textContent = site.brandName;
@@ -779,24 +719,23 @@
             document.getElementById('display-profile-img').src = site.profileImg;
             document.getElementById('display-wa-btn').href = `https://wa.me/${site.waNumber}`;
 
-            // Medsos di Section 2 (Hanya Teks murni, Tanpa Icon, Tanpa WA)
+            // Render Social Links (Teks murni, tanpa icon)
             const socialContainer = document.getElementById('social-links-container');
             socialContainer.innerHTML = `
-                ${site.igLink ? `<a href="${site.igLink}" target="_blank" class="flex items-center bg-gray-900/90 hover:bg-pink-950/40 hover:border-pink-500 text-gray-300 hover:text-pink-400 border border-gray-800 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all shadow-md">Instagram</a>` : ''}
-                ${site.ytLink ? `<a href="${site.ytLink}" target="_blank" class="flex items-center bg-gray-900/90 hover:bg-red-950/40 hover:border-red-500 text-gray-300 hover:text-red-400 border border-gray-800 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all shadow-md">YouTube</a>` : ''}
-                ${site.fbLink ? `<a href="${site.fbLink}" target="_blank" class="flex items-center bg-gray-900/90 hover:bg-blue-950/40 hover:border-blue-500 text-gray-300 hover:text-blue-400 border border-gray-800 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all shadow-md">Facebook</a>` : ''}
+                ${site.igLink ? `<a href="${site.igLink}" target="_blank" class="bg-gray-900/90 hover:bg-pink-950/40 hover:border-pink-500 text-gray-300 hover:text-pink-400 border border-gray-800 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all">Instagram</a>` : ''}
+                ${site.ytLink ? `<a href="${site.ytLink}" target="_blank" class="bg-gray-900/90 hover:bg-red-950/40 hover:border-red-500 text-gray-300 hover:text-red-400 border border-gray-800 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all">YouTube</a>` : ''}
+                ${site.fbLink ? `<a href="${site.fbLink}" target="_blank" class="bg-gray-900/90 hover:bg-blue-950/40 hover:border-blue-500 text-gray-300 hover:text-blue-400 border border-gray-800 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all">Facebook</a>` : ''}
             `;
 
-            // Render Galleries (Termasuk folder ke-4)
+            // Render Grid Galeri Tiap Kategori
             renderGallery('Fotografi', 'gallery-fotografi-grid');
             renderGallery('Videografi', 'gallery-videografi-grid');
             renderGallery('Desain Grafis', 'gallery-desain-grafis-grid');
             renderGallery('Digital Art & Motion', 'gallery-digital-art-grid');
 
-            // Render Admin Table
+            // Render Tabel Admin
             renderAdminTable();
 
-            // Refresh Lucide Icons
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
                 lucide.createIcons();
             }
@@ -816,8 +755,7 @@
             container.innerHTML = filteredWorks.map(item => {
                 const mediaThumb = item.type === 'video' ? (item.thumbSrc || 'senja.jpg') : item.imgSrc;
                 return `
-                    <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col border border-gray-800/80 group"
-                         data-id="${item.id}">
+                    <div class="project-card bg-gray-900 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col border border-gray-800/80 group" data-id="${item.id}">
                         <div class="relative overflow-hidden h-60 bg-black flex items-center justify-center">
                             <img src="${mediaThumb}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80'" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             ${item.type === 'video' ? `<div class="absolute inset-0 bg-black/40 flex items-center justify-center"><i data-lucide="play-circle" class="w-12 h-12 text-sky-400"></i></div>` : ''}
@@ -831,11 +769,9 @@
                 `;
             }).join('');
 
-            // Attach Click for Visitor Modal
             container.querySelectorAll('.project-card').forEach(card => {
                 card.addEventListener('click', () => {
-                    const workId = card.dataset.id;
-                    const work = portfolioData.works.find(w => w.id === workId);
+                    const work = portfolioData.works.find(w => w.id === card.dataset.id);
                     if (work) openProjectModal(work);
                 });
             });
@@ -850,7 +786,7 @@
                 : portfolioData.works.filter(w => w.category === activeAdminFilter);
 
             if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-gray-500">Tidak ada karya terdaftar.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-gray-500">Tidak ada karya.</td></tr>`;
                 return;
             }
 
@@ -885,13 +821,10 @@
             const modal = document.getElementById('project-modal');
             const modalImg = document.getElementById('modal-img');
             const modalVideo = document.getElementById('modal-video');
-            const modalCategory = document.getElementById('modal-category');
-            const modalTitle = document.getElementById('modal-title');
-            const modalDescription = document.getElementById('modal-description');
 
-            modalCategory.textContent = work.category;
-            modalTitle.textContent = work.title;
-            modalDescription.textContent = work.description;
+            document.getElementById('modal-category').textContent = work.category;
+            document.getElementById('modal-title').textContent = work.title;
+            document.getElementById('modal-description').textContent = work.description;
 
             modalImg.classList.add('hidden');
             modalVideo.classList.add('hidden');
@@ -908,10 +841,9 @@
             modal.classList.add('visible');
         }
 
-        function closeProjectModal() {
-            const modal = document.getElementById('project-modal');
+        function closeModal() {
             document.body.classList.remove('modal-open');
-            modal.classList.remove('visible');
+            document.getElementById('project-modal').classList.remove('visible');
             document.getElementById('modal-video').src = "";
             document.getElementById('modal-img').src = "";
         }
@@ -935,7 +867,7 @@
         window.handleDeleteWork = function(id) {
             showConfirm(
                 "Hapus Karya",
-                "Apakah kamu yakin ingin menghapus karya ini secara permanen?",
+                "Apakah Anda yakin ingin menghapus karya ini?",
                 () => {
                     portfolioData.works = portfolioData.works.filter(w => w.id !== id);
                     saveToLocalStorage();
@@ -945,51 +877,44 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-
-            // Render Initial Data
             renderAllContent();
 
-            // Typing Effect Dynamic
+            // Typing Effect
             let typingWords = portfolioData.site.typingWords || ["Fotografer", "Videografer"];
-            let wordIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+            let wordIdx = 0, charIdx = 0, isDeleting = false;
 
-            function typeEffect() {
-                const typingTextElement = document.getElementById('typing-text');
-                if (!typingTextElement) return;
+            function typeLoop() {
+                const typingEl = document.getElementById('typing-text');
+                if (!typingEl) return;
 
-                const currentWord = typingWords[wordIndex % typingWords.length];
-                let displayText = isDeleting 
-                    ? currentWord.substring(0, charIndex - 1) 
-                    : currentWord.substring(0, charIndex + 1);
+                const currentWord = typingWords[wordIdx % typingWords.length];
+                typingEl.textContent = isDeleting 
+                    ? currentWord.substring(0, charIdx - 1) 
+                    : currentWord.substring(0, charIdx + 1);
 
-                typingTextElement.textContent = displayText;
-                charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+                charIdx = isDeleting ? charIdx - 1 : charIdx + 1;
+                let speed = isDeleting ? 70 : 130;
 
-                let speed = isDeleting ? 80 : 150;
-
-                if (!isDeleting && charIndex === currentWord.length) {
+                if (!isDeleting && charIdx === currentWord.length) {
                     speed = 2000;
                     isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
+                } else if (isDeleting && charIdx === 0) {
                     isDeleting = false;
-                    wordIndex++;
+                    wordIdx++;
                     speed = 400;
                 }
 
-                setTimeout(typeEffect, speed);
+                setTimeout(typeLoop, speed);
             }
-            typeEffect();
+            typeLoop();
 
-            // Nav Header Background Scroll Handler
+            // Header Background Scroll
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('header');
-                if (window.scrollY > 40) {
-                    header.classList.add('bg-black/90', 'backdrop-blur-md', 'border-b', 'border-gray-800');
-                } else {
-                    header.classList.remove('bg-black/90', 'backdrop-blur-md', 'border-b', 'border-gray-800');
-                }
+                header.classList.toggle('bg-black/90', window.scrollY > 40);
+                header.classList.toggle('backdrop-blur-md', window.scrollY > 40);
+                header.classList.toggle('border-b', window.scrollY > 40);
+                header.classList.toggle('border-gray-800', window.scrollY > 40);
             });
 
             // Reveal Animation Observer
@@ -1000,14 +925,13 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // Gallery Navigation Logic
+            // Galeri Navigation Logic
             const mainContent = document.getElementById('main-content');
             const galleryPages = document.querySelectorAll('.gallery-page');
 
             document.querySelectorAll('.category-card').forEach(card => {
                 card.addEventListener('click', () => {
-                    const targetPageId = card.dataset.targetPage;
-                    const targetPage = document.getElementById(targetPageId);
+                    const targetPage = document.getElementById(card.dataset.targetPage);
                     if (targetPage) {
                         mainContent.style.display = 'none';
                         galleryPages.forEach(p => p.classList.add('hidden'));
@@ -1024,70 +948,62 @@
                 });
             });
 
-            // Ketentuan 3: Listener tombol scroll kiri (<) dan kanan (>)
+            // Navigation Geser Slider (< >)
             const scrollContainer = document.getElementById('category-scroll-container');
-            const btnScrollLeft = document.getElementById('scroll-left-btn');
-            const btnScrollRight = document.getElementById('scroll-right-btn');
+            const btnLeft = document.getElementById('scroll-left-btn');
+            const btnRight = document.getElementById('scroll-right-btn');
 
-            if (scrollContainer && btnScrollLeft && btnScrollRight) {
-                btnScrollLeft.addEventListener('click', () => {
-                    scrollContainer.scrollBy({ left: -320, behavior: 'smooth' });
-                });
-                btnScrollRight.addEventListener('click', () => {
-                    scrollContainer.scrollBy({ left: 320, behavior: 'smooth' });
-                });
+            if (scrollContainer && btnLeft && btnRight) {
+                btnLeft.addEventListener('click', () => scrollContainer.scrollBy({ left: -320, behavior: 'smooth' }));
+                btnRight.addEventListener('click', () => scrollContainer.scrollBy({ left: 320, behavior: 'smooth' }));
             }
 
-            // Visitor Modal Close Event
-            document.getElementById('modal-close-button').addEventListener('click', closeProjectModal);
+            // Close Visitor Modal
+            document.getElementById('modal-close-button').addEventListener('click', closeModal);
             document.getElementById('project-modal').addEventListener('click', (e) => {
-                if (e.target === document.getElementById('project-modal')) closeProjectModal();
+                if (e.target === document.getElementById('project-modal')) closeModal();
             });
 
-            // Mobile Menu Toggle
+            // Mobile Menu
             const mobileBtn = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
             if (mobileBtn) {
-                mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                mobileBtn.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.toggle('hidden');
+                });
             }
 
-            const adminLoginModal = document.getElementById('admin-login-modal');
-            const adminDashboardModal = document.getElementById('admin-dashboard-modal');
+            // Admin Modals
+            const loginModal = document.getElementById('admin-login-modal');
+            const dashboardModal = document.getElementById('admin-dashboard-modal');
             const workFormModal = document.getElementById('work-form-modal');
-            const loginErrorMsg = document.getElementById('login-error-msg');
 
-            // Open Admin Login
-            const openLogin = () => {
-                loginErrorMsg.classList.add('hidden');
-                adminLoginModal.classList.add('visible');
-            };
-            document.getElementById('admin-login-btn-footer').addEventListener('click', openLogin);
-            document.getElementById('close-login-modal').addEventListener('click', () => adminLoginModal.classList.remove('visible'));
+            document.getElementById('admin-login-btn-footer').addEventListener('click', () => {
+                document.getElementById('login-error-msg').classList.add('hidden');
+                loginModal.classList.add('visible');
+            });
+            document.getElementById('close-login-modal').addEventListener('click', () => loginModal.classList.remove('visible'));
 
             // Handle Admin Login Submit
             document.getElementById('admin-login-form').addEventListener('submit', (e) => {
                 e.preventDefault();
-                const pin = document.getElementById('admin-pin-input').value;
-                if (pin === "1234") {
-                    loginErrorMsg.classList.add('hidden');
-                    adminLoginModal.classList.remove('visible');
-                    adminDashboardModal.classList.add('visible');
+                if (document.getElementById('admin-pin-input').value === "1234") {
+                    loginModal.classList.remove('visible');
+                    dashboardModal.classList.add('visible');
                     document.getElementById('admin-pin-input').value = "";
                     loadContentFormFields();
                     showToast("Berhasil masuk Dashboard Admin!");
                 } else {
-                    loginErrorMsg.classList.remove('hidden');
+                    document.getElementById('login-error-msg').classList.remove('hidden');
                 }
             });
 
-            // Logout & Close Dashboard
             document.getElementById('admin-logout-btn').addEventListener('click', () => {
-                adminDashboardModal.classList.remove('visible');
-                showToast("Berhasil keluar dari Admin.");
+                dashboardModal.classList.remove('visible');
+                showToast("Keluar dari Admin.");
             });
-            document.getElementById('close-dashboard-modal').addEventListener('click', () => adminDashboardModal.classList.remove('visible'));
+            document.getElementById('close-dashboard-modal').addEventListener('click', () => dashboardModal.classList.remove('visible'));
 
-            // Dashboard Tab Navigation
+            // Dashboard Tabs
             document.querySelectorAll('.dashboard-tab-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.dashboard-tab-btn').forEach(b => {
@@ -1098,13 +1014,13 @@
                     btn.classList.remove('border-transparent', 'text-gray-400');
 
                     const targetTab = btn.dataset.tab;
-                    document.querySelectorAll('.dashboard-tab-content').forEach(content => {
-                        content.classList.toggle('hidden', content.id !== targetTab);
+                    document.querySelectorAll('.dashboard-tab-content').forEach(c => {
+                        c.classList.toggle('hidden', c.id !== targetTab);
                     });
                 });
             });
 
-            // Filter Table Works in Admin
+            // Filter Tabel Works Admin
             document.querySelectorAll('.work-filter-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.work-filter-btn').forEach(b => {
@@ -1119,7 +1035,7 @@
                 });
             });
 
-            // Add New Work Modal Open
+            // Form Modal Open/Close
             document.getElementById('open-add-work-modal').addEventListener('click', () => {
                 document.getElementById('work-form-modal-title').textContent = "Tambah Karya Baru";
                 document.getElementById('crud-work-id').value = "";
@@ -1131,7 +1047,7 @@
             document.getElementById('close-work-form-modal').addEventListener('click', closeWorkForm);
             document.getElementById('cancel-work-crud').addEventListener('click', closeWorkForm);
 
-            // Handle Save Add/Edit Work
+            // Save Work CRUD
             document.getElementById('work-crud-form').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const id = document.getElementById('crud-work-id').value;
@@ -1143,32 +1059,21 @@
                 const description = document.getElementById('crud-work-desc').value;
 
                 if (id) {
-                    // Edit Existing
-                    const index = portfolioData.works.findIndex(w => w.id === id);
-                    if (index !== -1) {
-                        portfolioData.works[index] = {
-                            id,
-                            category,
-                            title,
-                            type,
-                            description,
+                    const idx = portfolioData.works.findIndex(w => w.id === id);
+                    if (idx !== -1) {
+                        portfolioData.works[idx] = {
+                            id, category, title, type, description,
                             thumbSrc: thumbSrc || (type === 'video' ? src : ''),
                             ...(type === 'video' ? { videoSrc: src } : { imgSrc: src })
                         };
                     }
                 } else {
-                    // Add New
-                    const newId = "work-" + Date.now();
-                    const newWork = {
-                        id: newId,
-                        category,
-                        title,
-                        type,
-                        description,
+                    portfolioData.works.unshift({
+                        id: "work-" + Date.now(),
+                        category, title, type, description,
                         thumbSrc: thumbSrc || (type === 'video' ? src : ''),
                         ...(type === 'video' ? { videoSrc: src } : { imgSrc: src })
-                    };
-                    portfolioData.works.unshift(newWork);
+                    });
                 }
 
                 saveToLocalStorage();
@@ -1176,7 +1081,6 @@
                 showToast("Data karya berhasil disimpan!");
             });
 
-            // Load Content Fields
             function loadContentFormFields() {
                 const site = portfolioData.site;
                 document.getElementById('input-brand-name').value = site.brandName || '';
@@ -1215,7 +1119,7 @@
                 showToast("Informasi website berhasil diperbarui!");
             });
 
-            // Export Data JSON
+            // Export & Import Data JSON
             document.getElementById('export-json-btn').addEventListener('click', () => {
                 const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(portfolioData, null, 2));
                 const downloadAnchor = document.createElement('a');
@@ -1224,13 +1128,12 @@
                 document.body.appendChild(downloadAnchor);
                 downloadAnchor.click();
                 downloadAnchor.remove();
-                showToast("File backup JSON telah diunduh!");
+                showToast("File JSON berhasil diunduh!");
             });
 
-            // Import Data JSON
             document.getElementById('import-json-input').addEventListener('change', (e) => {
-                const fileReader = new FileReader();
-                fileReader.onload = (event) => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
                     try {
                         const importedData = JSON.parse(event.target.result);
                         if (importedData.site && importedData.works) {
@@ -1238,40 +1141,37 @@
                             saveToLocalStorage();
                             loadContentFormFields();
                             showToast("Restore data berhasil!");
-                        } else {
-                            showToast("Format JSON tidak valid!");
                         }
                     } catch (err) {
-                        showToast("Gagal membaca file JSON!");
+                        showToast("File JSON tidak valid!");
                     }
                 };
-                if (e.target.files[0]) fileReader.readAsText(e.target.files[0]);
+                if (e.target.files[0]) reader.readAsText(e.target.files[0]);
             });
 
-            // Reset Default Action
+            // Reset Default
             document.getElementById('reset-default-btn').addEventListener('click', () => {
                 showConfirm(
                     "Reset Semua Data",
-                    "Apakah kamu yakin ingin mengembalikan seluruh isi website ke data bawaan awal?",
+                    "Apakah Anda yakin ingin mengembalikan portofolio ke kondisi awal?",
                     () => {
                         localStorage.removeItem('afsans_portfolio_data');
                         portfolioData = DEFAULT_PORTFOLIO_DATA;
                         saveToLocalStorage();
                         loadContentFormFields();
-                        showToast("Sistem telah direset ke data default!");
+                        showToast("Sistem telah direset ke kondisi default!");
                     }
                 );
             });
 
-            // Category Card Drag Scroll
+            // Drag Scroll Slider
             if (scrollContainer) {
-                let isDown = false;
-                let startX, scrollLeft;
+                let isDown = false, startX, scrollLeftPos;
                 scrollContainer.addEventListener('mousedown', (e) => {
                     isDown = true;
                     scrollContainer.classList.add('cursor-grabbing');
                     startX = e.pageX - scrollContainer.offsetLeft;
-                    scrollLeft = scrollContainer.scrollLeft;
+                    scrollLeftPos = scrollContainer.scrollLeft;
                 });
                 scrollContainer.addEventListener('mouseleave', () => { isDown = false; });
                 scrollContainer.addEventListener('mouseup', () => { isDown = false; });
@@ -1279,7 +1179,7 @@
                     if (!isDown) return;
                     e.preventDefault();
                     const x = e.pageX - scrollContainer.offsetLeft;
-                    scrollContainer.scrollLeft = scrollLeft - (x - startX) * 2;
+                    scrollContainer.scrollLeft = scrollLeftPos - (x - startX) * 2;
                 });
             }
         });
