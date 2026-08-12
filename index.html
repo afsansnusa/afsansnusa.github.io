@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio & Admin CMS Afsans</title>
 
-    <!-- Tailwind CSS CDN --> 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts: Poppins -->
@@ -126,7 +126,6 @@
             <a href="#" id="site-logo-text" class="text-2xl font-bold text-white hover:text-sky-400 transition-colors">Afsans.</a>
             <nav class="hidden md:flex space-x-8 items-center">
                 <a href="#about" class="hover:text-sky-400 transition-colors">Tentang Saya</a>
-                <a href="#comments" class="hover:text-sky-400 transition-colors">Komentar</a>
                 <a href="#projects" class="hover:text-sky-400 transition-colors">Proyek</a>
                 <a href="#contact" class="hover:text-sky-400 transition-colors">Kontak</a>
             </nav>
@@ -139,7 +138,6 @@
         <!-- Mobile Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-gray-800">
             <a href="#about" class="block py-3 px-6 hover:bg-gray-800">Tentang Saya</a>
-            <a href="#comments" class="block py-3 px-6 hover:bg-gray-800">Komentar</a>
             <a href="#projects" class="block py-3 px-6 hover:bg-gray-800">Proyek</a>
             <a href="#contact" class="block py-3 px-6 hover:bg-gray-800">Kontak</a>
         </div>
@@ -182,21 +180,6 @@
             </div>
         </section>
 
-        <!-- Section Komentar (Terletak Dibawah Section 2) -->
-        <section id="comments" class="py-20 reveal overflow-hidden">
-            <div class="container mx-auto px-6 mb-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Kesan & Komentar</h2>
-                <p class="text-gray-400 text-sm max-w-xl mx-auto">Apa kata mereka yang telah melihat dan bekerja sama dalam karya-karya saya.</p>
-            </div>
-
-            <!-- Auto-sliding Infinite Ticker Marquee Komentar -->
-            <div class="relative w-full overflow-hidden py-4 group">
-                <div id="comments-marquee-track" class="animate-marquee-track gap-6 flex">
-                    <!-- Rendered via JS -->
-                </div>
-            </div>
-        </section>
-
         <!-- Section 3: Karya & Proyek -->
         <section id="projects" class="py-24 overflow-hidden relative">
             <div class="container mx-auto px-6 text-center mb-8 reveal">
@@ -233,36 +216,6 @@
             <a id="display-wa-btn" href="https://wa.me/6282328140597" target="_blank" class="inline-flex items-center gap-2 bg-transparent text-sky-400 font-bold py-4 px-8 rounded-full border-2 border-sky-400 hover:bg-sky-400 hover:text-black transition-all duration-300 transform hover:scale-105">
                 <i data-lucide="message-circle" class="w-5 h-5"></i> Hubungi Saya via WhatsApp
             </a>
-        </section>
-
-        <!-- Form Tulis Komentar Pengunjung (Sebelum Footer) -->
-        <section id="write-comment" class="container mx-auto px-6 py-12 max-w-2xl reveal">
-            <form id="add-comment-form" class="bg-gray-900/90 border border-gray-800 p-6 sm:p-8 rounded-2xl shadow-2xl backdrop-blur-sm space-y-4">
-                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                    <i data-lucide="message-square-plus" class="w-5 h-5 text-sky-400"></i> Tinggalkan Komentar Anda
-                </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs text-gray-400 mb-1">Nama / Panggilan</label>
-                        <input type="text" id="comment-author" placeholder="Nama Anda" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition-colors" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs text-gray-400 mb-1">Rating Karya</label>
-                        <select id="comment-rating" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition-colors">
-                            <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
-                            <option value="4">⭐⭐⭐⭐ (4/5)</option>
-                            <option value="3">⭐⭐⭐ (3/5)</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs text-gray-400 mb-1">Pesan / Pesan Kesan</label>
-                    <textarea id="comment-text" rows="3" placeholder="Tuliskan apresiasi, saran, atau kesan Anda di sini..." class="w-full bg-gray-800 border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500 transition-colors" required></textarea>
-                </div>
-                <button type="submit" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 active:scale-95">
-                    <i data-lucide="send" class="w-4 h-4"></i> Kirim Komentar
-                </button>
-            </form>
         </section>
     </main>
 
@@ -324,7 +277,7 @@
                     <i data-lucide="lock" class="w-6 h-6"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white">Login Admin CMS</h3>
-                <p class="text-xs text-gray-400 mt-1">Masukkan PIN<span class="text-sky-400 font-mono font-bold"></span></p>
+                <p class="text-xs text-gray-400 mt-1">Masukkan PIN default: <span class="text-sky-400 font-mono font-bold">1234</span></p>
             </div>
             <form id="admin-login-form" class="space-y-4">
                 <div>
@@ -370,9 +323,6 @@
                 </button>
                 <button data-tab="tab-categories" class="dashboard-tab-btn border-b-2 border-transparent text-gray-400 hover:text-white font-semibold px-4 py-3 text-sm flex items-center gap-2 whitespace-nowrap">
                     <i data-lucide="folder-plus" class="w-4 h-4"></i> Kelola Folder Kategori
-                </button>
-                <button data-tab="tab-comments" class="dashboard-tab-btn border-b-2 border-transparent text-gray-400 hover:text-white font-semibold px-4 py-3 text-sm flex items-center gap-2 whitespace-nowrap">
-                    <i data-lucide="message-square" class="w-4 h-4"></i> Kelola Komentar
                 </button>
                 <button data-tab="tab-content" class="dashboard-tab-btn border-b-2 border-transparent text-gray-400 hover:text-white font-semibold px-4 py-3 text-sm flex items-center gap-2 whitespace-nowrap">
                     <i data-lucide="file-text" class="w-4 h-4"></i> Edit Teks & Profil
@@ -443,32 +393,7 @@
                     </div>
                 </div>
 
-                <!-- TAB 3: KELOLA KOMENTAR -->
-                <div id="tab-comments" class="dashboard-tab-content space-y-6 hidden">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-950 p-4 rounded-xl border border-gray-800">
-                        <div>
-                            <h3 class="text-base font-bold text-white">Daftar Komentar Pengunjung</h3>
-                            <p class="text-xs text-gray-400">Kelola komentar dan masukan yang ditampilkan di beranda.</p>
-                        </div>
-                    </div>
-
-                    <div class="overflow-x-auto border border-gray-800 rounded-xl bg-gray-950">
-                        <table class="w-full text-left text-xs text-gray-300">
-                            <thead class="bg-gray-900 text-gray-400 uppercase tracking-wider font-semibold border-b border-gray-800">
-                                <tr>
-                                    <th class="py-3 px-4">Nama Author</th>
-                                    <th class="py-3 px-4">Rating</th>
-                                    <th class="py-3 px-4">Komentar</th>
-                                    <th class="py-3 px-4">Tanggal</th>
-                                    <th class="py-3 px-4 text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-comments-table-body" class="divide-y divide-gray-800"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- TAB 4: EDIT TEKS & PROFIL -->
+                <!-- TAB 3: EDIT TEKS & PROFIL -->
                 <div id="tab-content" class="dashboard-tab-content space-y-6 hidden">
                     <form id="site-content-form" class="space-y-6">
                         <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-4">
@@ -692,12 +617,6 @@
                 { id: "cat-3", name: "Desain Grafis", desc: "Identitas visual, branding, dan desain promosi kreatif.", img: "Info islam.png" },
                 { id: "cat-4", name: "Digital Art & Motion", desc: "Eksperimen seni digital, efek visual, dan ilustrasi modern.", img: "Typo4.png" }
             ],
-            comments: [
-                { id: "com-1", author: "Rian Prasetya", text: "Hasil pemotretannya luar biasa! Tone warna dan pencahayaannya pas banget.", rating: 5, date: "10 Ags 2026" },
-                { id: "com-2", author: "Siti Nurhaliza", text: "Video dokumentasinya sinematik dan berkesan sekali. Sukses terus mas Fadil!", rating: 5, date: "08 Ags 2026" },
-                { id: "com-3", author: "Budi Santoso", text: "Desain grafis dan logo yang dibuat profesional & kreatif. Pilihan tepat!", rating: 5, date: "05 Ags 2026" },
-                { id: "com-4", author: "Anisa Rahma", text: "Karyanya inspiratif banget. Komunikasi ramah dan pengerjaan cepat.", rating: 5, date: "01 Ags 2026" }
-            ],
             works: [
                 // Fotografi
                 { id: "fot-1", type: "image", category: "Fotografi", title: "Potret Senja", year: "2024", imgSrc: "senja.jpg", description: "Sesi pemotretan potret yang menangkap kehangatan cahaya matahari terbenam." },
@@ -735,9 +654,7 @@
         };
 
         let portfolioData = JSON.parse(localStorage.getItem('afsans_portfolio_data')) || DEFAULT_PORTFOLIO_DATA;
-        // Migration check for categories/comments if coming from older storage
         if (!portfolioData.categories) portfolioData.categories = DEFAULT_PORTFOLIO_DATA.categories;
-        if (!portfolioData.comments) portfolioData.comments = DEFAULT_PORTFOLIO_DATA.comments;
 
         let activeAdminFilter = "All";
 
@@ -798,9 +715,6 @@
                 ${site.fbLink ? `<a href="${site.fbLink}" target="_blank" class="bg-gray-900/90 hover:bg-blue-950/40 hover:border-blue-500 text-gray-300 hover:text-blue-400 border border-gray-800 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all">Facebook</a>` : ''}
             `;
 
-            // Render Section Komentar Marquee
-            renderCommentsMarquee();
-
             // Render Dynamic Category Cards Scroll
             renderCategoryCards();
 
@@ -810,41 +724,10 @@
             // Render Admin Tables
             renderAdminTable();
             renderAdminCategoryTable();
-            renderAdminCommentsTable();
 
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
                 lucide.createIcons();
             }
-        }
-
-        function renderCommentsMarquee() {
-            const track = document.getElementById('comments-marquee-track');
-            if (!track) return;
-
-            const commentsList = portfolioData.comments && portfolioData.comments.length > 0 
-                ? portfolioData.comments 
-                : DEFAULT_PORTFOLIO_DATA.comments;
-
-            // Duplicate comments array for smooth infinite marquee looping
-            const displayList = [...commentsList, ...commentsList, ...commentsList];
-
-            track.innerHTML = displayList.map(c => {
-                const stars = "⭐".repeat(c.rating || 5);
-                return `
-                    <div class="bg-gray-900/90 border border-gray-800 p-5 rounded-2xl w-80 sm:w-96 flex-shrink-0 shadow-lg flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-bold text-white text-sm">${c.author}</h4>
-                                <span class="text-xs text-amber-400">${stars}</span>
-                            </div>
-                            <p class="text-xs text-gray-300 leading-relaxed italic">"${c.text}"</p>
-                        </div>
-                        <div class="mt-4 pt-2 border-t border-gray-800/60 text-[10px] text-gray-500 text-right">
-                            ${c.date || 'Terbaru'}
-                        </div>
-                    </div>
-                `;
-            }).join('');
         }
 
         function renderCategoryCards() {
@@ -1024,34 +907,6 @@
             lucide.createIcons();
         }
 
-        function renderAdminCommentsTable() {
-            const tbody = document.getElementById('admin-comments-table-body');
-            if (!tbody) return;
-
-            if (portfolioData.comments.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-gray-500">Belum ada komentar.</td></tr>`;
-                return;
-            }
-
-            tbody.innerHTML = portfolioData.comments.map(c => {
-                return `
-                    <tr class="hover:bg-gray-900/50 transition-colors">
-                        <td class="py-2.5 px-4 font-bold text-white">${c.author}</td>
-                        <td class="py-2.5 px-4 text-amber-400">${"⭐".repeat(c.rating || 5)}</td>
-                        <td class="py-2.5 px-4 text-gray-300 max-w-xs truncate">${c.text}</td>
-                        <td class="py-2.5 px-4 text-gray-500">${c.date || '-'}</td>
-                        <td class="py-2.5 px-4 text-center">
-                            <button onclick="handleDeleteComment('${c.id}')" class="p-1.5 bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white rounded-lg transition-colors" title="Hapus Komentar">
-                                <i data-lucide="trash-2" class="w-4 h-4"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-
-            lucide.createIcons();
-        }
-
         function openProjectModal(work) {
             const modal = document.getElementById('project-modal');
             const modalImg = document.getElementById('modal-img');
@@ -1125,18 +980,6 @@
                     portfolioData.categories = portfolioData.categories.filter(c => c.id !== id);
                     saveToLocalStorage();
                     showToast("Folder kategori berhasil dihapus!");
-                }
-            );
-        };
-
-        window.handleDeleteComment = function(id) {
-            showConfirm(
-                "Hapus Komentar",
-                "Apakah Anda yakin ingin menghapus komentar ini?",
-                () => {
-                    portfolioData.comments = portfolioData.comments.filter(c => c.id !== id);
-                    saveToLocalStorage();
-                    showToast("Komentar berhasil dihapus!");
                 }
             );
         };
@@ -1222,33 +1065,6 @@
                 });
             }
 
-            // Form Submit Komentar Pengunjung
-            document.getElementById('add-comment-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const author = document.getElementById('comment-author').value.trim();
-                const text = document.getElementById('comment-text').value.trim();
-                const rating = parseInt(document.getElementById('comment-rating').value) || 5;
-
-                const today = new Date();
-                const options = { day: '2-digit', month: 'short', year: 'numeric' };
-                const dateStr = today.toLocaleDateString('id-ID', options);
-
-                const newComment = {
-                    id: "com-" + Date.now(),
-                    author,
-                    text,
-                    rating,
-                    date: dateStr
-                };
-
-                if (!portfolioData.comments) portfolioData.comments = [];
-                portfolioData.comments.unshift(newComment);
-
-                saveToLocalStorage();
-                document.getElementById('add-comment-form').reset();
-                showToast("Komentar Anda berhasil ditambahkan!");
-            });
-
             // Admin Modals Login & Dashboard
             const loginModal = document.getElementById('admin-login-modal');
             const dashboardModal = document.getElementById('admin-dashboard-modal');
@@ -1264,7 +1080,7 @@
             // Handle Admin Login Submit
             document.getElementById('admin-login-form').addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (document.getElementById('admin-pin-input').value === "030369") {
+                if (document.getElementById('admin-pin-input').value === "1234") {
                     loginModal.classList.remove('visible');
                     dashboardModal.classList.add('visible');
                     document.getElementById('admin-pin-input').value = "";
