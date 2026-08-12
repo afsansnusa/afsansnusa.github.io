@@ -277,14 +277,14 @@
                     <i data-lucide="lock" class="w-6 h-6"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white">Login Admin CMS</h3>
-                <p class="text-xs text-gray-400 mt-1">Masukkan PIN default: <span class="text-sky-400 font-mono font-bold">1234</span></p>
+                <p class="text-xs text-gray-400 mt-1">Masukkan PIN<span class="text-sky-400 font-mono font-bold"></span></p>
             </div>
             <form id="admin-login-form" class="space-y-4">
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">PIN Admin</label>
                     <input type="password" id="admin-pin-input" placeholder="Masukkan PIN" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500 text-center text-lg tracking-widest font-mono" required>
                 </div>
-                <p id="login-error-msg" class="text-xs text-red-400 text-center hidden">PIN Admin Salah! Gunakan: 1234</p>
+                <p id="login-error-msg" class="text-xs text-red-400 text-center hidden">PIN Admin Salah!</p>
                 <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-sky-500/20">
                     Masuk Dashboard
                 </button>
@@ -1080,7 +1080,7 @@
             // Handle Admin Login Submit
             document.getElementById('admin-login-form').addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (document.getElementById('admin-pin-input').value === "1234") {
+                if (document.getElementById('admin-pin-input').value === "030369") {
                     loginModal.classList.remove('visible');
                     dashboardModal.classList.add('visible');
                     document.getElementById('admin-pin-input').value = "";
